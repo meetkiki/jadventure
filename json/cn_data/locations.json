@@ -447,8 +447,8 @@
 		"npcs": ["guide"],
 		"items": ["wshi1"],
 		"locationType": "CAVE",
-		"title": "First Location Ever",
-		"description": "You are in a massive empty room.",
+		"title": "第一个位置",
+		"description": "你在一个巨大的空房间里。",
 		"coordinate": "0,0,-1"},
 	"1,0,-1":{
 		"danger": 0,

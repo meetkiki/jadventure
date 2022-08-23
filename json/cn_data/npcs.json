@@ -103,7 +103,7 @@
           "rightHand": "hands"
         }
       ],
-      "intro": "Hey, rat. . . you dead??\n*You let out a groan...*\nWhat are you doing?!? Don't you know it's crazy to sleep so close to the recruits' camp? A guard will come down those stairs soon enough and catch you! You'll end up being drafted! You better come back in.\nBy the way, what's your name?",
+      "intro": "嘿，老鼠。你死了吗？？\n*你呻吟了一声…*\n你在干什么？！？你不知道睡得离新兵营地这么近很疯狂吗？很快就会有警卫从楼梯上下来抓住你！你最终会被征召入伍！你最好回来。\n顺便问一下，你叫什么名字？",
       "allies": [
       	"Sewer Rat"
       ],
@@ -312,7 +312,7 @@
           "rightHand": "hands"
         }
       ],
-      "intro": "Hey... you alive?\n*You let out a groan...*\nHey, mate, you need to wake up. The guards will be coming 'round soon, and they put a spear through the last guy they found still asleep.\n*Slowly, you sit up.*\nThat's the way! I'm going to head back up. Follow me as soon as you can.\nBy the way, I'm Thorall. What's your name?",
+      "intro": "嘿…你还活着吗\n*你发出一声呻吟*\n嘿，伙计，你需要醒过来。警卫很快就会过来，他们用长矛刺穿了最后一个还在睡觉的人。\n*慢慢地，你坐起来*\n就是这样！我要回去了。尽快跟我来。\n顺便说一下，我是索拉尔。你叫什么名字？ ",
       "allies": [
       	"Recruit"
       ],

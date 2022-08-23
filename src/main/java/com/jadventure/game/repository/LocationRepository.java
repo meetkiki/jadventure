@@ -1,5 +1,6 @@
 package com.jadventure.game.repository;
 
+import com.jadventure.game.constant.Define;
 import com.jadventure.game.entities.NPC;
 import com.jadventure.game.items.Item;
 import com.jadventure.game.navigation.ILocation;
@@ -62,6 +63,11 @@ public class LocationRepository {
         return fileName;
     }
 
+    /**
+     * 如果存在用户数据,启用反之读取数据
+     * @date: 2022/8/23
+     * @return:
+     */
     private void load() {
         JsonParser parser = new JsonParser();
         File f = new File(fileName);
@@ -151,7 +157,8 @@ public class LocationRepository {
             Gson gson = new Gson();
             gson.toJson(jsonObject, writer);
             writer.close();
-            QueueProvider.offer("The game locations were saved.");
+            //QueueProvider.offer("The game locations were saved.");
+            QueueProvider.offer("游戏位置已保存。");
         } catch (IOException ex) {
             QueueProvider.offer("Unable to save to file " + fileName);
         }
@@ -177,7 +184,7 @@ public class LocationRepository {
     }
 
     private void copyLocationsFile() {
-        File source = new File("json/original_data/locations.json");
+        File source = new File(Define.configPath+"locations.json");
         File dest = new File(fileName);
         dest.mkdirs();
         try {

@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
+import com.jadventure.game.constant.Define;
 import com.jadventure.game.entities.NPC;
 import com.jadventure.game.items.Storage;
 import java.io.File;
@@ -23,7 +24,7 @@ import java.util.Map;
  */
 public class NpcRepository {
     private Map<String,NPC> npcMap = new HashMap<String,NPC>();
-    static String fileName = "json/original_data/npcs.json";
+    static String fileName = Define.configPath+"npcs.json";
     
     // Load all items, from the given file
     protected void load(File repo) {

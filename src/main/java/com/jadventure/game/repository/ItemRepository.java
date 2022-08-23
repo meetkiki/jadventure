@@ -101,7 +101,8 @@ public class ItemRepository {
         if (itemRepository == null) {
             File file = new File(new File(System.getProperty("user.dir")), "json");
 
-            File dataFile = new File(new File(file, "original_data"), "items.json");
+            //cn_data;original_data
+            File dataFile = new File(new File(file, "cn_data"), "items.json");
             if (! dataFile.exists()) {
             	throw new RuntimeException("File '" + dataFile + "' does not exist.");
             }

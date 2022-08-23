@@ -31,6 +31,7 @@ import com.google.gson.reflect.TypeToken;
 import com.jadventure.game.DeathException;
 import com.jadventure.game.GameBeans;
 import com.jadventure.game.QueueProvider;
+import com.jadventure.game.constant.Define;
 import com.jadventure.game.items.Item;
 import com.jadventure.game.items.ItemStack;
 import com.jadventure.game.items.Storage;
@@ -192,8 +193,7 @@ public class Player extends Entity {
     public static Player getInstance(String playerClass){
         player = new Player();
         JsonParser parser = new JsonParser();
-        //zgnHelp 角色单例文件
-        String fileName = "json/original_data/npcs.json";
+        String fileName = Define.configPath+"npcs.json";
         try {
             Reader reader = new FileReader(fileName);
             JsonObject npcs = parser.parse(reader).getAsJsonObject().get("npcs").getAsJsonObject();
@@ -338,7 +338,8 @@ public class Player extends Entity {
             writer.close();
             locationRepo = GameBeans.getLocationRepository(getName());
             locationRepo.writeLocations();
-            QueueProvider.offer("\nYour game data was saved.");
+            //QueueProvider.offer("\nYour game data was saved.");
+            QueueProvider.offer("\n您的游戏数据已保存。");
         } catch (IOException ex) {
             QueueProvider.offer("\nUnable to save to file '" + fileName + "'.");
         }

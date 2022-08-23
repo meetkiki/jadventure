@@ -1,6 +1,7 @@
 package com.jadventure.game.conversation;
 
 import com.jadventure.game.GameBeans;
+import com.jadventure.game.constant.Define;
 import com.jadventure.game.entities.NPC;
 import com.jadventure.game.entities.Player;
 import com.jadventure.game.items.Item;
@@ -62,7 +63,7 @@ public class ConversationManager {
     }
 
     private void load() {
-        String fileName = "json/original_data/npcs.json";
+        String fileName = Define.configPath+"npcs.json";
         JsonParser parser = new JsonParser();
         try {
             Reader reader = new FileReader(fileName);

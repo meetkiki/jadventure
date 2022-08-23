@@ -97,7 +97,7 @@
     "wshi1": {
       "type": "weapon",
       "name": "shiv",
-      "description": "a small dagger",
+      "description": "小匕首",
       "position": "rightHand",
       "level": 1,
       "properties": {

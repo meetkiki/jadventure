@@ -23,6 +23,8 @@
         <fileSet>
             <directory>json/original_data</directory>
             <outputDirectory>json/original_data</outputDirectory>
+            <!--<directory>json/cn_data</directory>
+            <outputDirectory>json/cn_data</outputDirectory>-->
             <includes>
                 <include>*.json</include>
             </includes>

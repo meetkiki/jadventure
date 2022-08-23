@@ -10,12 +10,13 @@ import java.util.Map;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.jadventure.game.constant.Define;
 import com.jadventure.game.entities.Player;
 
 public class CharacterChange {
     public void trigger(Player player, String triggerType, String keyword) {
         JsonParser parser = new JsonParser();
-        String fileName = "json/original_data/character_transitions.json";
+        String fileName = Define.configPath+"character_transitions.json";
         try {
             Reader reader = new FileReader(fileName);
             JsonObject json = parser.parse(reader).getAsJsonObject();

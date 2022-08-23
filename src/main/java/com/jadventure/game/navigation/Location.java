@@ -174,13 +174,15 @@ public class Location implements ILocation {
         QueueProvider.offer("    " + getDescription());
         List<Item> items = getItems();
         if (!items.isEmpty()) {
-            QueueProvider.offer("Items:");
+            //QueueProvider.offer("Items:");
+            QueueProvider.offer("背包:");
             for (Item item : items) {
                 QueueProvider.offer("    " + item.getName());
             }
         }
         List<NPC> npcs = getNpcs();
         if (!npcs.isEmpty()) {
+            //QueueProvider.offer("NPCs:");
             QueueProvider.offer("NPCs:");
             for (NPC npc : npcs) {
                 QueueProvider.offer("   " + npc.getName());

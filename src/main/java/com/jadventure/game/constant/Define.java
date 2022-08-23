@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 
 @Data
 public class Define {
+    ////zgnHelp 配置文件路径json/original_data/
+    public static String configPath="json/cn_data/";//original_data;cn_data
     //指令
     public static String commandStart="开始";
     public static String commandLoad="读档";

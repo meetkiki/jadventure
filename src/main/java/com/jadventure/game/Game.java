@@ -27,7 +27,8 @@ public class Game {
                   newGameStart(player);
                   break;
               case "old":
-                  QueueProvider.offer("Welcome back, " + player.getName() + "!");
+                  //QueueProvider.offer("Welcome back, " + player.getName() + "!");
+                  QueueProvider.offer("欢迎回来, " + player.getName() + "!");
                   QueueProvider.offer("");
                   player.getLocation().print();
                   gamePrompt(player);
@@ -43,6 +44,13 @@ public class Game {
      * It prints the introduction text first and asks for the name of the player's
      * character and welcomes him / her. After that, it goes to the normal game prompt.
      */
+
+
+    /**
+     *开始新游戏。
+     *它首先打印介绍文本，并询问玩家的姓名
+     *性格并欢迎他/她。之后，它进入正常的游戏提示。
+     */
     public void newGameStart(Player player) throws DeathException {
         QueueProvider.offer(player.getIntro());
         String userInput = QueueProvider.take();
@@ -50,7 +58,8 @@ public class Game {
         LocationRepository locationRepo = GameBeans.getLocationRepository(player.getName());
         this.player.setLocation(locationRepo.getInitialLocation());
         player.save();
-        QueueProvider.offer("Welcome to Silliya, " + player.getName() + ".");
+        //QueueProvider.offer("Welcome to Silliya, " + player.getName() + ".");
+        QueueProvider.offer("欢迎来到西里亚, " + player.getName() + ".");
         player.getLocation().print();
         gamePrompt(player);
     }

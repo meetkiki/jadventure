@@ -83,7 +83,8 @@ public class MainMenu extends Menus implements Runnable {
         Player player = null;
         do {
             listProfiles();
-            QueueProvider.offer("\nSelect a profile to load. Type 'back' to go back.");
+            //QueueProvider.offer("\nSelect a profile to load. Type 'back' to go back.");
+            QueueProvider.offer("\n选择要加载的配置文件。输入“后退”返回。");
             key = QueueProvider.take();
             if (key.equals("exit") || key.equals("back")) {
                 return;
@@ -155,7 +156,7 @@ public class MainMenu extends Menus implements Runnable {
         }
         File file = new File("json/profiles");
         String[] profiles = file.list();
-        QueueProvider.offer("Profiles:");
+        QueueProvider.offer("记录:");
         for (String name : profiles) {
             if (new File("json/profiles/" + name).isDirectory()) {
                 QueueProvider.offer("  " + name);
