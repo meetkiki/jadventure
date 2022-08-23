@@ -8,6 +8,7 @@ import com.jadventure.game.Game;
 import com.jadventure.game.GameModeType;
 import com.jadventure.game.JAdventure;
 import com.jadventure.game.QueueProvider;
+import com.jadventure.game.constant.Define;
 import com.jadventure.game.entities.Player;
 
 /**
@@ -17,7 +18,7 @@ import com.jadventure.game.entities.Player;
  * start a new one, or exit to the terminal.
  */
 public class MainMenu extends Menus implements Runnable {
-     
+
     public MainMenu(Socket server, GameModeType mode){
         QueueProvider.startMessenger(mode, server);
     }
@@ -25,16 +26,21 @@ public class MainMenu extends Menus implements Runnable {
     public MainMenu() {
         start();
     }
-    
+
     public void run() {
         start();
     }
 
     public void start() {
-        menuItems.add(new MenuItem("Start", "Starts a new Game", "new"));
+        /*menuItems.add(new MenuItem("Start", "Starts a new Game", "new"));
         menuItems.add(new MenuItem("Load", "Loads an existing Game"));
         menuItems.add(new MenuItem("Delete", "Deletes an existing Game"));
-        menuItems.add(new MenuItem("Exit", null, "quit"));
+        menuItems.add(new MenuItem("Exit", null, "quit"));*/
+
+        menuItems.add(new MenuItem(Define.commandStart, "开始新的旅程", "new"));
+        menuItems.add(new MenuItem(Define.commandLoad, "加载存档"));
+        menuItems.add(new MenuItem(Define.commandDelete, "删除存档"));
+        menuItems.add(new MenuItem(Define.commandExit, null, "quit"));
 
         boolean continuing = true;
         do {
@@ -52,19 +58,18 @@ public class MainMenu extends Menus implements Runnable {
 
     private static boolean testOption(MenuItem m) throws DeathException {
         String key = m.getKey();
-        switch (key){
-            case "start":
-                new ChooseClassMenu();
-                break;
-            case "load":
-                loadProfileFromMenu();
-                break;
-            case "delete":
-                deleteProfileFromMenu();
-                break;
-            case "exit":
-                QueueProvider.offer("Goodbye!");
-                return false;
+        if(key.equals(Define.commandStart)){
+            new ChooseClassMenu();
+        }
+        if(key.equals(Define.commandLoad)){
+            loadProfileFromMenu();
+        }
+        if(key.equals(Define.commandDelete)){
+            deleteProfileFromMenu();
+        }
+        if(key.equals(Define.commandExit)){
+            QueueProvider.offer("Goodbye!");
+            return false;
         }
         return true;
     }

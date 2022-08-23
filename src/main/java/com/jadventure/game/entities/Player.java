@@ -48,6 +48,12 @@ import com.jadventure.game.repository.LocationRepository;
  * be placed within this class. If a method deals with entities in general or
  * with variables not unique to the player, place it in the entity class.
  */
+/**
+ *这个类处理玩家及其所有属性。
+ *任何更改角色或与角色交互的方法都应该
+ *放在这个类中。如果方法一般处理实体，或
+ *对于不是玩家唯一的变量，将其放在实体类中。
+ */
 public class Player extends Entity {
     // @Resource
     protected static ItemRepository itemRepo = GameBeans.getItemRepository();
@@ -79,7 +85,7 @@ public class Player extends Entity {
     public String getCurrentCharacterType() {
         return this.type;
     }
-    
+
     public void setCurrentCharacterType(String newCharacterType) {
         this.type = newCharacterType;
     }
@@ -173,11 +179,20 @@ public class Player extends Entity {
     }
 
     // This is known as the singleton pattern. It allows for only 1 instance of a player.
+    //这被称为单例模式。它只允许玩家的一个实例。
     private static Player player;
-    
+
+    /**
+     * 依据角色从单例文件中获取信息
+     * @author  zgn
+     * @date    2022/8/23 0023
+     * @param	playerClass 角色
+     * @return	com.jadventure.game.entities.Player
+     */
     public static Player getInstance(String playerClass){
         player = new Player();
         JsonParser parser = new JsonParser();
+        //zgnHelp 角色单例文件
         String fileName = "json/original_data/npcs.json";
         try {
             Reader reader = new FileReader(fileName);
@@ -225,7 +240,7 @@ public class Player extends Entity {
         }
 
         return player;
-    } 
+    }
 
     public int getXP() {
         return xp;
@@ -343,7 +358,7 @@ public class Player extends Entity {
     public List<Item> searchItem(String itemName, Storage storage) {
         return storage.search(itemName);
     }
-    
+
     public List<Item> searchEquipment(String itemName, Map<EquipmentLocation, Item> equipment) {
         List<Item> items = new ArrayList<>();
         for (Item item : equipment.values()) {
