@@ -1,4 +1,4 @@
-![](https://gitee.com/zgn_13200126222/jadventure/blob/master/doc/%E6%B8%B8%E6%88%8F%E6%88%AA%E5%9B%BE/20220824_001.png "test")
+![](https://gitee.com/zgn_13200126222/jadventure/raw/master/doc/%E6%B8%B8%E6%88%8F%E6%88%AA%E5%9B%BE/20220824_001.png "test")
 ==============================================
 
 
