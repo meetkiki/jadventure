@@ -1,5 +1,6 @@
 package com.jadventure.game.prompts;
 
+import com.jadventure.game.constant.Define;
 import com.jadventure.game.entities.Player;
 import com.jadventure.game.items.Item;
 import com.jadventure.game.repository.RepositoryException;
@@ -27,14 +28,14 @@ public class BackpackDebugPrompt{
     public BackpackDebugPrompt(Player player){
         boolean continuePrompt = true;
         while(continuePrompt){
-            QueueProvider.offer("Edit backpack:");
+            QueueProvider.offer(Define.strEditBackpack);
             String command = QueueProvider.take();
             continuePrompt = parse(player, command.toLowerCase());
         }
     }
     public static boolean parse(Player player, String command){
         boolean continuePrompt = true;
-        
+
         try {
             if (command.startsWith("add")){
                 try {
@@ -59,7 +60,7 @@ public class BackpackDebugPrompt{
         } catch (NumberFormatException e){
             QueueProvider.offer("Invalid item name");
         }
-        
+
         return continuePrompt;
     }
 }

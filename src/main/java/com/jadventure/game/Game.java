@@ -1,5 +1,6 @@
 package com.jadventure.game;
 
+import com.jadventure.game.constant.Define;
 import com.jadventure.game.entities.Player;
 import com.jadventure.game.monsters.Monster;
 import com.jadventure.game.monsters.MonsterFactory;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  */
 public class Game {
     public ArrayList<Monster> monsterList = new ArrayList<Monster>();
-    public MonsterFactory monsterFactory = new MonsterFactory(); 
+    public MonsterFactory monsterFactory = new MonsterFactory();
     public CommandParser parser;
     public Monster monster;
     Player player = null;
@@ -27,8 +28,7 @@ public class Game {
                   newGameStart(player);
                   break;
               case "old":
-                  //QueueProvider.offer("Welcome back, " + player.getName() + "!");
-                  QueueProvider.offer("欢迎回来, " + player.getName() + "!");
+                  QueueProvider.offer(String.format(Define.strWelcome,player.getName()));
                   QueueProvider.offer("");
                   player.getLocation().print();
                   gamePrompt(player);
@@ -38,7 +38,7 @@ public class Game {
                   break;
           }
     }
-   
+
     /**
      * Starts a new game.
      * It prints the introduction text first and asks for the name of the player's
@@ -58,8 +58,7 @@ public class Game {
         LocationRepository locationRepo = GameBeans.getLocationRepository(player.getName());
         this.player.setLocation(locationRepo.getInitialLocation());
         player.save();
-        //QueueProvider.offer("Welcome to Silliya, " + player.getName() + ".");
-        QueueProvider.offer("欢迎来到西里亚, " + player.getName() + ".");
+        QueueProvider.offer(String.format(Define.strWelcome001,player.getName()));
         player.getLocation().print();
         gamePrompt(player);
     }
@@ -74,7 +73,7 @@ public class Game {
         boolean continuePrompt = true;
         try {
             while (continuePrompt) {
-                QueueProvider.offer("\nPrompt:");
+                QueueProvider.offer(Define.strPrompt);
                 String command = QueueProvider.take().toLowerCase();
                 continuePrompt = parser.parse(player, command);
             }

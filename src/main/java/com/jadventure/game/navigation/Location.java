@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.jadventure.game.GameBeans;
 import com.jadventure.game.QueueProvider;
+import com.jadventure.game.constant.Define;
 import com.jadventure.game.entities.NPC;
 import com.jadventure.game.items.Item;
 import com.jadventure.game.items.Storage;
@@ -86,6 +87,7 @@ public class Location implements ILocation {
     }
 
     // It checks each direction for an exit and adds it to the exits hashmap if it exists.
+    //它检查出口的每个方向，并将其添加到出口哈希映射（如果存在）。
     public Map<Direction, ILocation> getExits() {
         Map<Direction, ILocation> exits = new HashMap<Direction, ILocation>();
         ILocation borderingLocation;
@@ -116,7 +118,7 @@ public class Location implements ILocation {
     public void addNpcs(List<NPC> npcs) {
         for (NPC npc : npcs) {
             addNpc(npc);
-        } 
+        }
     }
 
     public void addNpc(NPC npc) {
@@ -156,7 +158,7 @@ public class Location implements ILocation {
             }
         }
     }
-    
+
     public List<Monster> getMonsters() {
         return monsters;
     }
@@ -174,16 +176,14 @@ public class Location implements ILocation {
         QueueProvider.offer("    " + getDescription());
         List<Item> items = getItems();
         if (!items.isEmpty()) {
-            //QueueProvider.offer("Items:");
-            QueueProvider.offer("背包:");
+            QueueProvider.offer(Define.strItems);
             for (Item item : items) {
                 QueueProvider.offer("    " + item.getName());
             }
         }
         List<NPC> npcs = getNpcs();
         if (!npcs.isEmpty()) {
-            //QueueProvider.offer("NPCs:");
-            QueueProvider.offer("NPCs:");
+            QueueProvider.offer(Define.strNPCs);
             for (NPC npc : npcs) {
                 QueueProvider.offer("   " + npc.getName());
             }

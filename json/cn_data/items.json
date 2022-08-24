@@ -14,7 +14,7 @@
     "hands": {
       "type": "weapon",
       "name": "hands",
-      "description": "they look quite strong",
+      "description": "它们看起来很结实",
       "position": "rightHand",
       "level": 1,
       "properties": {
@@ -24,7 +24,7 @@
     "fbrd1": {
       "type": "food",
       "name": "bread",
-      "description": "small piece of bread",
+      "description": "一小块面包",
       "position": "mouth",
       "level": 1,
       "properties": {
@@ -35,7 +35,7 @@
     "pmil1": {
       "type": "potion",
       "name": "milk",
-      "description": "some delicious milk",
+      "description": "一些美味的牛奶",
       "position": "mouth",
       "level": 1,
       "properties": {
@@ -48,7 +48,7 @@
     "pmil2": {
       "type": "potion",
       "name": "super milk",
-      "description": "this milk must have come from a super cow because it is extra delicious milk",
+      "description": "这牛奶一定来自超级奶牛，因为它是非常美味的牛奶",
       "position": "mouth",
       "level": 2,
       "properties": {
@@ -61,7 +61,7 @@
     "fram1": {
       "type": "food",
       "name": "raw meat",
-      "description": "some delicious raw meat",
+      "description": "一些美味的生肉",
       "position": "mouth",
       "level": 1,
       "properties": {
@@ -73,7 +73,7 @@
     "fcom1": {
       "type": "food",
       "name": "cooked meat",
-      "description": "some delicious cooked meat",
+      "description": "一些美味的熟肉",
       "position": "mouth",
       "level": 1,
       "properties": {
@@ -85,7 +85,7 @@
     "fbum1": {
       "type": "food",
       "name": "burnt meat",
-      "description": "some crispy burnt meat",
+      "description": "一些酥脆的烧肉",
       "position": "mouth",
       "level": 1,
       "properties": {
@@ -109,7 +109,7 @@
     "wdag1": {
       "type": "weapon",
       "name": "dagger",
-      "description": "a basic dagger",
+      "description": "一把普通的匕首",
       "position": "rightHand",
       "level": 1,
       "properties": {
@@ -121,7 +121,7 @@
     "wshs1": {
       "type": "weapon",
       "name": "shortsword",
-      "description": "a basic shortsword",
+      "description": "一柄普通的短剑",
       "position": "rightHand",
       "level": 1,
       "properties": {
@@ -133,7 +133,7 @@
     "wspe1": {
       "type": "weapon",
       "name": "spear",
-      "description": "a basic spear",
+      "description": "一杆普通长矛",
       "position": "rightHand",
       "level": 1,
       "properties": {
@@ -145,7 +145,7 @@
     "wbrd1": {
       "type": "weapon",
       "name": "broadsword",
-      "description": "a two handed broadsword",
+      "description": "一把双手刀",
       "position": "bothHands",
       "level": 1,
       "properties": {
@@ -157,7 +157,7 @@
     "ashi1": {
       "type": "armour",
       "name": "wooden shield",
-      "description": "a wooden shield, watch out for splinters!",
+      "description": "木盾，小心碎片!",
       "position": "leftHand",
       "level": 1,
       "properties": {
@@ -169,7 +169,7 @@
     "arhl1": {
       "type": "armour",
       "name": "rusted helmet",
-      "description": "a rusted helmet, it will do for now",
+      "description": "一顶生锈的头盔,正适合现在.",
       "position": "head",
       "level": 1,
       "properties": {
@@ -181,7 +181,7 @@
     "albr1": {
       "type": "armour",
       "name": "leather breastplate",
-      "description": "a leather breastplate, it will do for now",
+      "description": "皮革护胸,正适合现在.",
       "position": "chest",
       "level": 1,
       "properties": {
@@ -193,7 +193,7 @@
     "agre1": {
       "type": "armour",
       "name": "leather greaves",
-      "description": "a pair of leather greaves",
+      "description": "一双皮革护腿",
       "position": "legs",
       "level": 1,
       "properties": {
@@ -205,7 +205,7 @@
     "albt1": {
       "type": "armour",
       "name": "leather boots",
-      "description": "a pair of leather boots, it will do for now",
+      "description": "一双皮靴,正适合现在",
       "position": "feet",
       "level": 1,
       "properties": {
@@ -217,7 +217,7 @@
     "algt1": {
       "type": "armour",
       "name": "leather gauntlets",
-      "description": "leather gaunlets, they will do for now",
+      "description": "一双皮革护腕,正适合现在",
       "position": "bothArms",
       "level": 1,
       "properties": {
@@ -229,7 +229,7 @@
     "albr1": {
       "type": "armour",
       "name": "leather arm brace",
-      "description": "a leather arm brace, like the gladiators of old would wear",
+      "description": "疑似古代的角斗士穿着的皮革护臂",
       "position": "rightArm",
       "level": 1,
       "properties": {
@@ -241,7 +241,7 @@
     "tlap1": {
       "type": "tool",
       "name": "lock and pick",
-      "description": "tools to pick locks",
+      "description": "开锁工具",
       "position": "rightHand",
       "level": 1,
       "properties": {
@@ -252,7 +252,7 @@
     "phli1": {
       "type": "potion",
       "name": "Potion of Health",
-      "description": "Magic potion that increases vitality",
+      "description": "增加生命力的魔法药水",
       "position": "mouth",
       "level": 1,
       "properties": {
@@ -262,15 +262,15 @@
         "value": "50"
       }
     },
-	"katana": {
+    "katana": {
       "type": "weapon",
       "name": "Katana",
-      "description": "A long sword once used by a legendary Japanese samurai",
+      "description": "传说中的日本武士曾经使用的长剑",
       "position": "rightHand",
       "level": 3,
       "properties": {
         "damage": "+50",
-		"weight": "3",
+        "weight": "3",
         "value": "0"
       }
     }

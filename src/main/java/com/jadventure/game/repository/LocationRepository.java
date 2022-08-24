@@ -157,8 +157,7 @@ public class LocationRepository {
             Gson gson = new Gson();
             gson.toJson(jsonObject, writer);
             writer.close();
-            //QueueProvider.offer("The game locations were saved.");
-            QueueProvider.offer("游戏位置已保存。");
+            QueueProvider.offer(Define.strSaveLocations);
         } catch (IOException ex) {
             QueueProvider.offer("Unable to save to file " + fileName);
         }

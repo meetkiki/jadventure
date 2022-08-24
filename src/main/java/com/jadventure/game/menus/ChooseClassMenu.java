@@ -7,8 +7,11 @@ import com.jadventure.game.Game;
 import com.jadventure.game.QueueProvider;
 
 /**
- * Called when creating a new Player
- */
+ * 角色选择
+ * @EngDesc Called when creating a new Player
+ * @author  zgn
+ * @date    2022/8/24 0024
+*/
 public class ChooseClassMenu extends Menus {
 
     public ChooseClassMenu() throws DeathException {
@@ -16,7 +19,7 @@ public class ChooseClassMenu extends Menus {
         this.menuItems.add(new MenuItem(Define.commandSewerRat, "西里亚地下组织的成员"));
 
         while(true) {
-            QueueProvider.offer(Define.narrator选择角色);
+            QueueProvider.offer(Define.narratorSelectRole);
             MenuItem selectedItem = displayMenu(this.menuItems);
             if(testOption(selectedItem)) {
             	break;

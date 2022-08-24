@@ -7,6 +7,7 @@ import java.util.TreeMap;
 
 import com.jadventure.game.DeathException;
 import com.jadventure.game.QueueProvider;
+import com.jadventure.game.constant.Define;
 import com.jadventure.game.entities.Player;
 
 /**
@@ -43,7 +44,14 @@ public class CommandParser {
             }
         }
     }
-
+    /**
+     * 解析玩家指令
+     * @author  zgn
+     * @date    2022/8/24 0024
+     * @param	player 玩家
+     * @param	userCommand 指令
+     * @return	boolean
+     */
     public boolean parse(Player player, String userCommand) throws DeathException {
         CommandCollection com = CommandCollection.getInstance();
         com.initPlayer(player);
@@ -79,7 +87,7 @@ public class CommandParser {
                             }
                         }
                     } else {
-                        QueueProvider.offer("I don't know what '" + userCommand + "' means.");
+                        QueueProvider.offer(String.format(Define.strUnknowPrompt,userCommand));
                         return true;
                     }
                 } else if (method.getParameterTypes()[0] == String.class) {
@@ -105,7 +113,7 @@ public class CommandParser {
                 return true;
             }
         }
-        QueueProvider.offer("I don't know what '" + userCommand + "' means.");
+        QueueProvider.offer(String.format(Define.strUnknowPrompt,userCommand));
         return true;
     }
 

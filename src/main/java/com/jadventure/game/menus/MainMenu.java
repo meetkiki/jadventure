@@ -17,6 +17,12 @@ import com.jadventure.game.entities.Player;
  * This menu lets the player choose whether to load an exiting game,
  * start a new one, or exit to the terminal.
  */
+/**
+ * 主菜单
+ * @EngDesc Called when creating a new Player
+ * @author  zgn
+ * @date    2022/8/24 0024
+ */
 public class MainMenu extends Menus implements Runnable {
 
     public MainMenu(Socket server, GameModeType mode){
@@ -37,9 +43,9 @@ public class MainMenu extends Menus implements Runnable {
         menuItems.add(new MenuItem("Delete", "Deletes an existing Game"));
         menuItems.add(new MenuItem("Exit", null, "quit"));*/
 
-        menuItems.add(new MenuItem(Define.commandStart, "开始新的旅程", "new"));
-        menuItems.add(new MenuItem(Define.commandLoad, "加载存档"));
-        menuItems.add(new MenuItem(Define.commandDelete, "删除存档"));
+        menuItems.add(new MenuItem(Define.commandStart, Define.strComStart, "new"));
+        menuItems.add(new MenuItem(Define.commandLoad, Define.strComLoad));
+        menuItems.add(new MenuItem(Define.commandDelete, Define.strComDelete));
         menuItems.add(new MenuItem(Define.commandExit, null, "quit"));
 
         boolean continuing = true;
@@ -53,7 +59,7 @@ public class MainMenu extends Menus implements Runnable {
                 }
             }
         } while(continuing);
-        QueueProvider.offer("EXIT");
+        QueueProvider.offer(Define.strEXIT);
     }
 
     private static boolean testOption(MenuItem m) throws DeathException {
@@ -68,7 +74,7 @@ public class MainMenu extends Menus implements Runnable {
             deleteProfileFromMenu();
         }
         if(key.equals(Define.commandExit)){
-            QueueProvider.offer("Goodbye!");
+            QueueProvider.offer(Define.strGoodbye);
             return false;
         }
         return true;
@@ -83,8 +89,7 @@ public class MainMenu extends Menus implements Runnable {
         Player player = null;
         do {
             listProfiles();
-            //QueueProvider.offer("\nSelect a profile to load. Type 'back' to go back.");
-            QueueProvider.offer("\n选择要加载的配置文件。输入“后退”返回。");
+            QueueProvider.offer(Define.strChioceRecord);
             key = QueueProvider.take();
             if (key.equals("exit") || key.equals("back")) {
                 return;
@@ -156,7 +161,7 @@ public class MainMenu extends Menus implements Runnable {
         }
         File file = new File("json/profiles");
         String[] profiles = file.list();
-        QueueProvider.offer("记录:");
+        QueueProvider.offer(Define.strRecord);
         for (String name : profiles) {
             if (new File("json/profiles/" + name).isDirectory()) {
                 QueueProvider.offer("  " + name);

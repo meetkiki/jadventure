@@ -1,6 +1,7 @@
 package com.jadventure.game.menus;
 
 import com.jadventure.game.DeathException;
+import com.jadventure.game.constant.Define;
 import com.jadventure.game.entities.Entity;
 import com.jadventure.game.entities.Player;
 import com.jadventure.game.entities.NPC;
@@ -33,7 +34,7 @@ public class BattleMenu extends Menus {
         while (opponent.getHealth() > 0 &&
                 player.getHealth() > 0 &&
                 (escapeSuccessfulAttempts <= 0)) {
-            QueueProvider.offer("\nWhat is your choice?");
+            QueueProvider.offer(Define.strYourChioce);
             MenuItem selectedItem = displayMenu(this.menuItems);
             testSelected(selectedItem);
         }

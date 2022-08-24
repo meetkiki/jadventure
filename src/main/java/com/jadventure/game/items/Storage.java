@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jadventure.game.QueueProvider;
+import com.jadventure.game.constant.Define;
 
 /**
  * Defines an interface for any type of storage in this game.
@@ -119,7 +120,7 @@ public class Storage {
      */
     public void display() {
             QueueProvider.offer("\n--------------------------------------------------------------------");
-            QueueProvider.offer("Backpack: ");
+            QueueProvider.offer(Define.strBackpack);
             QueueProvider.offer(this.toString());
             QueueProvider.offer("--------------------------------------------------------------------");
     }
@@ -137,7 +138,7 @@ public class Storage {
         }
         return items;
     }
-    
+
     public List<Item> getItems() {
         List<Item> items = new ArrayList<>();
         for (ItemStack itemStack : itemStacks) {
@@ -148,7 +149,7 @@ public class Storage {
 
     public String toString() {
         if (this.itemStacks.isEmpty()) {
-            return "--Empty--";
+            return Define.strEmpty;
         } else {
             String content = "";
             for (ItemStack item : this.itemStacks) {
@@ -170,7 +171,7 @@ public class Storage {
 
     public String displayWithValue(int playerLuck, int playerInt) {
         if (itemStacks.isEmpty()) {
-            return "--Empty--";
+            return Define.strEmpty;
         } else {
             String content = "";
             if(playerLuck > 0){

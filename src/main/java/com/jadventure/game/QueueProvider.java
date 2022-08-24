@@ -2,6 +2,7 @@ package com.jadventure.game;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
@@ -10,6 +11,9 @@ import java.util.Scanner;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import lombok.SneakyThrows;
+import org.apache.commons.configuration.Configuration;
+import org.apache.commons.configuration.PropertiesConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,6 +25,26 @@ public class QueueProvider {
     public static DataInputStream in;
     public static GameModeType mode;
     public static Socket server;
+    public static Configuration config = getConfig();
+
+    /**
+     * 获取配置信息
+     */
+    @SneakyThrows
+    public static Configuration getConfig() {
+        try {
+            String relativelyPath = System.getProperty("user.dir");//获取当前项目的根目录
+            return new PropertiesConfiguration(relativelyPath
+                    + File.separator+"src"
+                    + File.separator+"main"
+                    + File.separator+"resources"
+                    + File.separator+"international"
+                    + File.separator+"cnGameDes.properties"
+            );
+        } catch (Exception e) {
+            throw new DeathException("获取配置文件失败，"+e.getMessage());
+        }
+    }
 
     public static void startMessenger(GameModeType modeInc, Socket sockerInc) {
         logger.debug("startMessenger( " + modeInc + " , " + sockerInc + " )");
@@ -44,7 +68,7 @@ public class QueueProvider {
             try {
                 out = new DataOutputStream(server.getOutputStream());
                 in = new DataInputStream(server.getInputStream());
-            } catch (IOException ioe) { 
+            } catch (IOException ioe) {
                 logger.debug("Inside offer( " + message + " )", ioe);
             }
         }
@@ -60,10 +84,10 @@ public class QueueProvider {
         logger.debug("sendToServer( " + message + " )");
         try {
             out.writeUTF(message + "END");
-        } catch(SocketException se) { 
+        } catch(SocketException se) {
             logger.debug("Inside  sendToServer( " + message + " )", se);
             return false;
-        } catch(IOException ioe) { 
+        } catch(IOException ioe) {
             logger.debug("Inside  sendToServer( " + message + " )", ioe);
             return false;
         }
@@ -76,10 +100,10 @@ public class QueueProvider {
         try {
             out.writeUTF(message + "END");
             input = in.readUTF();
-        } catch(SocketException se) { 
+        } catch(SocketException se) {
             logger.debug("Inside getInput( " + message + " )", se);
             input = "error";
-        } catch(IOException ioe) { 
+        } catch(IOException ioe) {
             logger.debug("Inside getInput( " + message + " )", ioe);
             input = "error";
         }

@@ -1,6 +1,7 @@
 package com.jadventure.game.menus;
 
 import com.jadventure.game.QueueProvider;
+import com.jadventure.game.constant.Define;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,7 +37,7 @@ public class Menus {
         if (commandMap.containsKey(command.toLowerCase())) {
             return commandMap.get(command.toLowerCase());
         } else {
-            QueueProvider.offer("I don't know what '" + command + "' means.");
+            QueueProvider.offer(String.format(Define.strUnknowPrompt,command));
             return this.displayMenu(m);
         }
     }

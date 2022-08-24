@@ -338,8 +338,7 @@ public class Player extends Entity {
             writer.close();
             locationRepo = GameBeans.getLocationRepository(getName());
             locationRepo.writeLocations();
-            //QueueProvider.offer("\nYour game data was saved.");
-            QueueProvider.offer("\n您的游戏数据已保存。");
+            QueueProvider.offer(Define.strSaveData);
         } catch (IOException ex) {
             QueueProvider.offer("\nUnable to save to file '" + fileName + "'.");
         }

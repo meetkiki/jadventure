@@ -3,6 +3,7 @@ package com.jadventure.game.prompts;
 import com.jadventure.game.DeathException;
 import com.jadventure.game.GameBeans;
 import com.jadventure.game.QueueProvider;
+import com.jadventure.game.constant.Define;
 import com.jadventure.game.conversation.ConversationManager;
 import com.jadventure.game.entities.NPC;
 import com.jadventure.game.entities.Player;
@@ -95,8 +96,8 @@ public enum CommandCollection {
                 }
                 command.append("):");
             }
-            String message = String.format("%-" +commandWidth + "s %-" + descriptionWidth + "s", 
-                    command, 
+            String message = String.format("%-" +commandWidth + "s %-" + descriptionWidth + "s",
+                    command,
                     annotation.description());
             if (annotation.debug()) {
                 if ("test".equals(player.getName())) {
@@ -104,7 +105,7 @@ public enum CommandCollection {
                 }
             } else {
                 QueueProvider.offer(message);
-                
+
             }
         }
     }
@@ -166,7 +167,7 @@ public enum CommandCollection {
                         if (monsters.size() > 0) {
                             int posMonster = random.nextInt(monsters.size());
                             String monster = monsters.get(posMonster).monsterType;
-                            QueueProvider.offer("A " + monster + " is attacking you!");
+                            QueueProvider.offer(String.format(Define.strAttacking,monster));
                             player.attack(monster);
                         }
                     }
@@ -213,7 +214,7 @@ public enum CommandCollection {
                 player.printStorage();
                 break;
             default:
-                QueueProvider.offer("That is not a valid display");
+                QueueProvider.offer(String.format(Define.strUnknowPrompt,arg));
                 break;
         }
     }

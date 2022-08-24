@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.jadventure.game.GameBeans;
 import com.jadventure.game.QueueProvider;
+import com.jadventure.game.constant.Define;
 import com.jadventure.game.items.Item;
 import com.jadventure.game.items.ItemStack;
 import com.jadventure.game.items.Storage;
@@ -17,7 +18,7 @@ import com.jadventure.game.repository.ItemRepository;
 public abstract class Entity {
     // @Resource
     protected ItemRepository itemRepo = GameBeans.getItemRepository();
-    
+
     // All entities can attack, have health, have names
     private int healthMax;
     private int health;
@@ -25,15 +26,15 @@ public abstract class Entity {
     private String intro;
     private int level;
     // Statistics
-    private int strength;
-    private int intelligence;
-    private int dexterity;
-    private int luck;
-    private int stealth;
+    private int strength;//力量
+    private int intelligence;//智力
+    private int dexterity;//敏捷
+    private int luck;//幸运
+    private int stealth;//精神
     private int gold;
     private double damage = 30;
-    private double critChance = 0.0;
-    private int armour;
+    private double critChance = 0.0;//暴击几率
+    private int armour;//盔甲
     private String weapon = "hands";
     private Map<EquipmentLocation, Item> equipment;
     protected Storage storage;
@@ -41,7 +42,7 @@ public abstract class Entity {
     public Entity() {
     	this(100, 100, "default", 0, null, new HashMap<EquipmentLocation, Item>());
     }
-    
+
     public Entity(int healthMax, int health, String name, int gold, Storage storage, Map<EquipmentLocation, Item> equipment) {
         this.healthMax = healthMax;
         this.health = health;
@@ -55,7 +56,7 @@ public abstract class Entity {
         }
 	    this.equipment = equipment;
     }
-    
+
 
     public int getHealth() {
         return this.health;
@@ -118,7 +119,7 @@ public abstract class Entity {
     public void setName(String name) {
         this.name = name;
     }
-     
+
     public void setIntro(String intro) {
         this.intro = intro;
     }
@@ -126,7 +127,7 @@ public abstract class Entity {
     public String getIntro() {
         return this.intro;
     }
-    
+
     public int getLevel() {
         return level;
     }
@@ -146,7 +147,7 @@ public abstract class Entity {
     public int getStrength() {
         return strength;
     }
-    
+
     public void setStrength(int strength) {
         this.strength = strength;
     }
@@ -158,7 +159,7 @@ public abstract class Entity {
     public void setIntelligence(int intelligence) {
         this.intelligence = intelligence;
     }
- 
+
     public int getDexterity() {
         return dexterity;
     }
@@ -187,6 +188,14 @@ public abstract class Entity {
         return weapon;
     }
 
+    /**
+     * 装备物品
+     * @author  zgn
+     * @date    2022/8/24 0024
+     * @param	place
+     * @param	item
+     * @return	java.util.Map<java.lang.String,java.lang.String>
+     */
     public Map<String, String> equipItem(EquipmentLocation place, Item item) {
         double oldDamage = this.damage;
         int oldArmour = this.armour;
@@ -200,13 +209,13 @@ public abstract class Entity {
             unequipTwoPlaces(EquipmentLocation.LEFT_HAND, EquipmentLocation.RIGHT_HAND);
         } else if (place == EquipmentLocation.BOTH_ARMS) {
             unequipTwoPlaces(EquipmentLocation.LEFT_ARM, EquipmentLocation.RIGHT_ARM);
-        } 
+        }
         Item bothHands = equipment.get(EquipmentLocation.BOTH_HANDS);
-        if (bothHands != null && (EquipmentLocation.LEFT_HAND == place || EquipmentLocation.RIGHT_HAND == place)) { 
+        if (bothHands != null && (EquipmentLocation.LEFT_HAND == place || EquipmentLocation.RIGHT_HAND == place)) {
             unequipItem(bothHands);
         }
         Item bothArms = equipment.get(EquipmentLocation.BOTH_ARMS);
-        if (bothArms != null && (place == EquipmentLocation.LEFT_ARM || place == EquipmentLocation.RIGHT_ARM)) { 
+        if (bothArms != null && (place == EquipmentLocation.LEFT_ARM || place == EquipmentLocation.RIGHT_ARM)) {
             unequipItem(bothArms);
         }
         equipment.put(place, item);
@@ -263,7 +272,7 @@ public abstract class Entity {
         if (left != null) {
             unequipItem(left);
         }
-        if (right != null) { 
+        if (right != null) {
             unequipItem(right);
         }
     }
@@ -284,7 +293,7 @@ public abstract class Entity {
             damage -= item.getProperty("damage");
             double diffDamage = damage - oldDamage;
             result.put("damage", String.valueOf(diffDamage));
-        } 
+        }
         if (item.containsProperty("armour")) {
             int oldArmour = armour;
             armour -= item.getProperty("armour");
@@ -296,9 +305,9 @@ public abstract class Entity {
 
     public void printEquipment() {
         QueueProvider.offer("\n------------------------------------------------------------");
-        QueueProvider.offer("Equipped Items:");
+        QueueProvider.offer(Define.strEquippedItems);
         if (equipment.keySet().size() == 0) {
-            QueueProvider.offer("--Empty--");
+            QueueProvider.offer(Define.strEmpty);
         } else {
             int i = 0;
             Item hands = itemRepo.getItem("hands");
@@ -321,10 +330,10 @@ public abstract class Entity {
                 }
             }
             if (i == equipment.keySet().size()) {
-                QueueProvider.offer("--Empty--");
+                QueueProvider.offer(Define.strEmpty);
             }
         }
-        QueueProvider.offer("------------------------------------------------------------"); 
+        QueueProvider.offer("------------------------------------------------------------");
     }
 
     public Storage getStorage() {
@@ -337,14 +346,24 @@ public abstract class Entity {
 
     public void printStorage() {
        storage.display();
-    } 
-    
+    }
+    /**
+     * 拾取进背包
+     * @author  zgn
+     * @date    2022/8/24 0024
+     * @param	item
+     */
     public void addItemToStorage(Item item) {
         storage.addItem(new ItemStack(1, item));
     }
-
+    /**
+     * 从背包丢弃
+     * @author  zgn
+     * @date    2022/8/24 0024
+     * @param	item
+     */
     public void removeItemFromStorage(Item item) {
-        storage.removeItem(new ItemStack(1, item)); 
+        storage.removeItem(new ItemStack(1, item));
     }
 
 }
