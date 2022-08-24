@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.jadventure.game.constant.Define;
 import com.jadventure.game.entities.Entity;
 import com.jadventure.game.entities.NPC;
 import com.jadventure.game.entities.Player;
@@ -25,8 +26,8 @@ public class Trading {
 
     public void trade(boolean buy, boolean sell) {
         List<MenuItem> tradeList = new ArrayList<>();
-        String buyCommand = "Buy from " + npc.getName();
-        String sellCommand = "Sell to " + npc.getName();
+        String buyCommand = String.format(Define.strBuy,npc.getName());
+        String sellCommand = String.format(Define.strSell,npc.getName());
         if (buy) {
             tradeList.add(new MenuItem(buyCommand, null));
         }
@@ -48,10 +49,10 @@ public class Trading {
     }
     
     public void playerBuy() {
-        QueueProvider.offer(npc.getName() + "'s items:\t" + npc.getName()  + "'s gold:" + npc.getGold() + "\n");
+        QueueProvider.offer(String.format(Define.strBuy001,npc.getName(),npc.getName(),npc.getGold()));
         QueueProvider.offer(npc.getStorage().displayWithValue(0, 0));
 
-        QueueProvider.offer("You have " + player.getGold() + " gold coins.\nWhat do you want to buy?");
+        QueueProvider.offer(String.format(Define.strBuy003,player.getGold()));
         String itemName = QueueProvider.take();
 
         if ("exit".equals(itemName) || "back".equals(itemName)) {
@@ -61,14 +62,14 @@ public class Trading {
         Item item = tradeItem(npc, player, itemName);
         if (item != null) {
             if (item != itemRepo.getItem("empty")) {
-                QueueProvider.offer("You have bought a " + item.getName() + " for " + item.getProperties().get("value") + " gold coins.");
-                QueueProvider.offer("You now have " + player.getGold() + " gold coins remaining.");
+                QueueProvider.offer(String.format(Define.strBuy004,item.getName(),item.getProperties().get("value")));
+                QueueProvider.offer(String.format(Define.strBuy005,player.getGold()));
             }
             else {
-                QueueProvider.offer("You do not have enough money!");
+                QueueProvider.offer(Define.strBuy006);
             }
         } else {
-            QueueProvider.offer("Either this item doesn't exist or this character does not own that item");
+            QueueProvider.offer(Define.strBuy007);
         }
     }
 

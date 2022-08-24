@@ -25,42 +25,42 @@
 	{
 	  "condition":"none",
 	  "player":"",
-	  "text":"Welcome to Syllia!",
+	  "text":"欢迎来到西里亚!",
 	  "response":[1,2,3,4,5],
 	  "action": "none"
 	},
 	{
 	  "condition": "none",
-	  "player":"What is Syllia?",
-	  "text": "A place of wonder and awe... Well it used to be at least, until these damn monsters invaded. Now it's all about fighting the monsters. There's not fun any more...",
+	  "player":"西里亚是哪?",
+	  "text": "一个充满惊奇和敬畏的地方……至少在这些该死的怪物入侵之前，这里曾经是。现在一切都是关于与怪物战斗。不再有乐趣了...",
 	  "response":[2,3,4,5],
 	  "action": "none"
 	},
         {
           "condition": "char type=Sewer Rat",
-          "player":"What should I do?",
-          "text":"Well that's an interesting question. As a sewer rat, you have a free reign over the underground. Explore and learn as you go. There's some unsavory characters down here but they should not be too mean to you. Watch out for the monsters though. They'll attack you regardless.",
+          "player":"我该怎么办?",
+          "text":"这是个有趣的问题。作为一个下水道老鼠，你可以自由支配地下空间。边探索边学习。下面有一些令人讨厌的角色，但他们不应该对你太刻薄。不过要小心那些怪物。他们会不顾一切地攻击你。",
           "response":[4,5],
           "action": "none"
         },        
 	{
           "condition": "char type=Recruit",
-          "player":"Where should I go?",
-          "text":"Hurry upstairs! This is no place for you and I'm sure your superiors will be wondering where you are.",
+          "player":"我应该去哪?",
+          "text":"快上楼！这不是你的地方，我相信你的上司会想知道你在哪里。 ",
           "response":[4,5],
           "action": "none"
         },
   	{
           "condition": "none",
-          "player":"Do you have anything to sell me that can help out?",
-          "text":"Actually now that you mention it, I *have* collected some things in my journeys that may help you out. Here, look through them and see what you like",
+          "player":"来做个生意吧!",
+          "text":"事实上，既然你提到了这一点，我在旅途中收集了一些东西，可能会帮助你。来，看看你喜欢什么",
           "response":[5],
           "action": "trade"
         },
 	{
 	  "condition": "none",
-	  "player": "Goodbye",
-	  "text": "Goodbye my friend!",
+	  "player": "再见",
+	  "text": "再见，我的朋友 !",
 	  "action": "none"
 	}
       ]

@@ -375,7 +375,9 @@ public class Player extends Entity {
             Item item = items.get(0);
             addItemToStorage(item);
             location.removeItem(item);
-            QueueProvider.offer(item.getName()+ " picked up");
+            QueueProvider.offer(String.format(Define.strPickUp,item.getName()));
+        }else{
+            QueueProvider.offer(String.format(Define.strPickUpNull,itemName));
         }
     }
 
@@ -405,13 +407,13 @@ public class Player extends Entity {
             Item item = items.get(0);
             if (getLevel() >= item.getLevel()) {
                 Map<String, String> change = equipItem(item.getPosition(), item);
-                QueueProvider.offer(item.getName()+ " equipped");
+                QueueProvider.offer(String.format(Define.strEquipped,item.getName()));
                 printStatChange(change);
             } else {
-                QueueProvider.offer("You do not have the required level to use this item");
+                QueueProvider.offer(Define.strItemLevel);
             }
         } else {
-            QueueProvider.offer("You do not have that item");
+            QueueProvider.offer(Define.strNullItem);
         }
     }
 
@@ -420,7 +422,7 @@ public class Player extends Entity {
          if (!items.isEmpty()) {
             Item item = items.get(0);
             Map<String, String> change = unequipItem(item);
-            QueueProvider.offer(item.getName()+" unequipped");
+            QueueProvider.offer(String.format(Define.strUnEquipped,item.getName()));
 	        printStatChange(change);
          }
     }

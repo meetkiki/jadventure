@@ -88,56 +88,45 @@ public class BattleMenu extends Menus {
     }
 
     private void buildMenu() {
-        this.menuItems.add(new MenuItem("Attack",
-                    "Attack " + opponent.getName() + "."));
-        this.menuItems.add(new MenuItem("Defend",
-                    "Defend against " + opponent.getName() + "'s attack."));
-        this.menuItems.add(new MenuItem("Escape",
-                    "Try and escape from " + opponent.getName()));
-        this.menuItems.add(new MenuItem("Equip", "Equip an item"));
-        this.menuItems.add(new MenuItem("Unequip", "Unequip an item"));
-        this.menuItems.add(new MenuItem("View",
-                    "View details about your character"));
+        this.menuItems.add(new MenuItem(Define.commandAttack,
+                String.format(Define.strAttack, opponent.getName())));
+        this.menuItems.add(new MenuItem(Define.commandDefend,
+                String.format(Define.strDefend, opponent.getName())));
+        this.menuItems.add(new MenuItem(Define.commandEscape,
+                String.format(Define.strEscape, opponent.getName())));
+        this.menuItems.add(new MenuItem(Define.commandEquip, Define.strEquip));
+        this.menuItems.add(new MenuItem(Define.commandUnequip, Define.strUnequip));
+        this.menuItems.add(new MenuItem(Define.commandView,Define.strView));
+
     }
 
     private void testSelected(MenuItem m) {
-        switch (m.getKey()) {
-            case "attack": {
-                   mutateStats(1, 0.5);
-                   attack(player, opponent);
-                   attack(opponent, player);
-                   resetStats();
-                   break;
-            }
-            case "defend": {
-                   mutateStats(0.5, 1);
-                   QueueProvider.offer("\nYou get ready to defend against " +
-                           "the " + opponent.getName() + ".");
-                   attack(player, opponent);
-                   attack(opponent, player);
-                   resetStats();
-                   break;
-            }
-            case "escape": {
-                       escapeSuccessfulAttempts = escapeAttempt(player,
-                               opponent, escapeSuccessfulAttempts);
-                   break;
-            }
-            case "equip": {
-                   equip();
-                   break;
-            }
-            case "unequip": {
-                  unequip();
-                  break;
-            }
-            case "view": {
-                  viewStats();
-                  break;
-            }
-            default: {
-                  break;
-            }
+        if(m.getKey().equals(Define.commandAttack)){
+            mutateStats(1, 0.5);
+            attack(player, opponent);
+            attack(opponent, player);
+            resetStats();
+        }
+        if(m.getKey().equals(Define.commandDefend)){
+            mutateStats(0.5, 1);
+            QueueProvider.offer("\nYou get ready to defend against " +
+                    "the " + opponent.getName() + ".");
+            attack(player, opponent);
+            attack(opponent, player);
+            resetStats();
+        }
+        if(m.getKey().equals(Define.commandEscape)){
+            escapeSuccessfulAttempts = escapeAttempt(player,
+                    opponent, escapeSuccessfulAttempts);
+        }
+        if(m.getKey().equals(Define.commandEquip)){
+            equip();
+        }
+        if(m.getKey().equals(Define.commandUnequip)){
+            unequip();
+        }
+        if(m.getKey().equals(Define.commandView)){
+            viewStats();
         }
     }
 

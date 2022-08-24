@@ -13,7 +13,7 @@
     },
     "hands": {
       "type": "weapon",
-      "name": "hands",
+      "name": "手掌",
       "description": "它们看起来很结实",
       "position": "rightHand",
       "level": 1,
@@ -23,7 +23,7 @@
     },
     "fbrd1": {
       "type": "food",
-      "name": "bread",
+      "name": "面包",
       "description": "一小块面包",
       "position": "mouth",
       "level": 1,
@@ -34,7 +34,7 @@
     },
     "pmil1": {
       "type": "potion",
-      "name": "milk",
+      "name": "牛奶",
       "description": "一些美味的牛奶",
       "position": "mouth",
       "level": 1,
@@ -47,7 +47,7 @@
     },
     "pmil2": {
       "type": "potion",
-      "name": "super milk",
+      "name": "超级牛奶",
       "description": "这牛奶一定来自超级奶牛，因为它是非常美味的牛奶",
       "position": "mouth",
       "level": 2,
@@ -60,7 +60,7 @@
     },
     "fram1": {
       "type": "food",
-      "name": "raw meat",
+      "name": "生肉",
       "description": "一些美味的生肉",
       "position": "mouth",
       "level": 1,
@@ -72,7 +72,7 @@
     },
     "fcom1": {
       "type": "food",
-      "name": "cooked meat",
+      "name": "熟肉",
       "description": "一些美味的熟肉",
       "position": "mouth",
       "level": 1,
@@ -84,7 +84,7 @@
     },
     "fbum1": {
       "type": "food",
-      "name": "burnt meat",
+      "name": "烧肉",
       "description": "一些酥脆的烧肉",
       "position": "mouth",
       "level": 1,
@@ -96,7 +96,7 @@
     },
     "wshi1": {
       "type": "weapon",
-      "name": "shiv",
+      "name": "小匕首",
       "description": "小匕首",
       "position": "rightHand",
       "level": 1,
@@ -108,7 +108,7 @@
     },
     "wdag1": {
       "type": "weapon",
-      "name": "dagger",
+      "name": "匕首",
       "description": "一把普通的匕首",
       "position": "rightHand",
       "level": 1,
@@ -120,7 +120,7 @@
     },
     "wshs1": {
       "type": "weapon",
-      "name": "shortsword",
+      "name": "短剑",
       "description": "一柄普通的短剑",
       "position": "rightHand",
       "level": 1,
@@ -132,7 +132,7 @@
     },
     "wspe1": {
       "type": "weapon",
-      "name": "spear",
+      "name": "矛",
       "description": "一杆普通长矛",
       "position": "rightHand",
       "level": 1,
@@ -144,7 +144,7 @@
     },
     "wbrd1": {
       "type": "weapon",
-      "name": "broadsword",
+      "name": "阔剑",
       "description": "一把双手刀",
       "position": "bothHands",
       "level": 1,
@@ -156,7 +156,7 @@
     },
     "ashi1": {
       "type": "armour",
-      "name": "wooden shield",
+      "name": "木盾",
       "description": "木盾，小心碎片!",
       "position": "leftHand",
       "level": 1,
@@ -168,7 +168,7 @@
     },
     "arhl1": {
       "type": "armour",
-      "name": "rusted helmet",
+      "name": "铁锈盔",
       "description": "一顶生锈的头盔,正适合现在.",
       "position": "head",
       "level": 1,
@@ -180,7 +180,7 @@
     },
     "albr1": {
       "type": "armour",
-      "name": "leather breastplate",
+      "name": "皮制胸甲",
       "description": "皮革护胸,正适合现在.",
       "position": "chest",
       "level": 1,
@@ -192,7 +192,7 @@
     },
     "agre1": {
       "type": "armour",
-      "name": "leather greaves",
+      "name": "皮制护腿",
       "description": "一双皮革护腿",
       "position": "legs",
       "level": 1,
@@ -204,7 +204,7 @@
     },
     "albt1": {
       "type": "armour",
-      "name": "leather boots",
+      "name": "皮靴",
       "description": "一双皮靴,正适合现在",
       "position": "feet",
       "level": 1,
@@ -216,7 +216,7 @@
     },
     "algt1": {
       "type": "armour",
-      "name": "leather gauntlets",
+      "name": "皮制护腕",
       "description": "一双皮革护腕,正适合现在",
       "position": "bothArms",
       "level": 1,
@@ -228,7 +228,7 @@
     },
     "albr1": {
       "type": "armour",
-      "name": "leather arm brace",
+      "name": "皮制护臂",
       "description": "疑似古代的角斗士穿着的皮革护臂",
       "position": "rightArm",
       "level": 1,
@@ -240,7 +240,7 @@
     },
     "tlap1": {
       "type": "tool",
-      "name": "lock and pick",
+      "name": "开锁工具",
       "description": "开锁工具",
       "position": "rightHand",
       "level": 1,
@@ -251,7 +251,7 @@
     },
     "phli1": {
       "type": "potion",
-      "name": "Potion of Health",
+      "name": "生命药剂",
       "description": "增加生命力的魔法药水",
       "position": "mouth",
       "level": 1,
@@ -264,7 +264,7 @@
     },
     "katana": {
       "type": "weapon",
-      "name": "Katana",
+      "name": "武士刀",
       "description": "传说中的日本武士曾经使用的长剑",
       "position": "rightHand",
       "level": 3,
