@@ -28,7 +28,7 @@ public class BackpackDebugPrompt{
     public BackpackDebugPrompt(Player player){
         boolean continuePrompt = true;
         while(continuePrompt){
-            QueueProvider.offer(Define.strEditBackpack);
+            QueueProvider.offer(Define.strBackpackEdit);
             String command = QueueProvider.take();
             continuePrompt = parse(player, command.toLowerCase());
         }

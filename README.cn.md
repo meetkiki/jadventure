@@ -24,13 +24,13 @@ JAdventure是基于Java（文本）的
 项目状态
 --------------
 **在建**本项目处于alpha状态。玩家可以走路
-通过游戏，找到物品并与一些 _有趣_ 人物战斗！
+通过游戏，找到物品并与一些 _有趣_ 人物战斗!
 
 
 
 欢迎开发人员
 ----------------------
-欢迎大家帮助创建JAdventure！
+欢迎大家帮助创建JAdventure!
 
 了解更多关于游戏和其中的想法的最佳方法是
 来看看[Reddit - JAdventure](https://www.reddit.com/search?q=jadventure).

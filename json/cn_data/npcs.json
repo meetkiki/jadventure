@@ -1,8 +1,8 @@
 {
   "npcs": {
     "guide": {
-      "name": "Guide",
-      "health":100,
+      "name": "向导",
+      "health": 100,
       "healthMax": 100,
       "damage": 1000,
       "armour": 0,
@@ -14,55 +14,54 @@
       "stealth": 0,
       "gold": 100,
       "allies": [
-	"Recruit",
-	"Sewer Rat"
+        "Recruit",
+        "Sewer Rat"
       ],
       "enemies": [],
-      "tradingEmphasis": [ "f" ],
+      "tradingEmphasis": ["f"],
       "sellLimit": 15,
-      "items":["pmil1", "fbrd1", "fcom1", "phli1", "ashi1"],
-      "conversations": [
-	{
-	  "condition":"none",
-	  "player":"",
-	  "text":"欢迎来到西里亚!",
-	  "response":[1,2,3,4,5],
-	  "action": "none"
-	},
-	{
-	  "condition": "none",
-	  "player":"西里亚是哪?",
-	  "text": "一个充满惊奇和敬畏的地方……至少在这些该死的怪物入侵之前，这里曾经是。现在一切都是关于与怪物战斗。不再有乐趣了...",
-	  "response":[2,3,4,5],
-	  "action": "none"
-	},
+      "items": ["pmil1", "fbrd1", "fcom1", "phli1", "ashi1"],
+      "conversations": [{
+        "condition": "none",
+        "player": "",
+        "text": "欢迎来到西里亚!",
+        "response": [1, 2, 3, 4, 5],
+        "action": "none"
+      },
+        {
+          "condition": "none",
+          "player": "西里亚是哪?",
+          "text": "一个充满惊奇和敬畏的地方……至少在这些该死的怪物入侵之前，这里曾经是。现在一切都是关于与怪物战斗。不再有乐趣了...",
+          "response": [2, 3, 4, 5],
+          "action": "none"
+        },
         {
           "condition": "char type=Sewer Rat",
-          "player":"我该怎么办?",
-          "text":"这是个有趣的问题。作为一个下水道老鼠，你可以自由支配地下空间。边探索边学习。下面有一些令人讨厌的角色，但他们不应该对你太刻薄。不过要小心那些怪物。他们会不顾一切地攻击你。",
-          "response":[4,5],
-          "action": "none"
-        },        
-	{
-          "condition": "char type=Recruit",
-          "player":"我应该去哪?",
-          "text":"快上楼！这不是你的地方，我相信你的上司会想知道你在哪里。 ",
-          "response":[4,5],
+          "player": "我该怎么办?",
+          "text": "这是个有趣的问题。作为一个下水道老鼠，你可以自由支配地下空间。边探索边学习。下面有一些令人讨厌的角色，但他们不应该对你太刻薄。不过要小心那些怪物。他们会不顾一切地攻击你。",
+          "response": [4, 5],
           "action": "none"
         },
-  	{
+        {
+          "condition": "char type=Recruit",
+          "player": "我应该去哪?",
+          "text": "快上楼!这不是你的地方，我相信你的上司会想知道你在哪里。 ",
+          "response": [4, 5],
+          "action": "none"
+        },
+        {
           "condition": "none",
-          "player":"来做个生意吧!",
-          "text":"事实上，既然你提到了这一点，我在旅途中收集了一些东西，可能会帮助你。来，看看你喜欢什么",
-          "response":[5],
+          "player": "来做个生意吧!",
+          "text": "事实上，既然你提到了这一点，我在旅途中收集了一些东西，可能会帮助你。来，看看你喜欢什么",
+          "response": [5],
           "action": "trade"
         },
-	{
-	  "condition": "none",
-	  "player": "再见",
-	  "text": "再见，我的朋友 !",
-	  "action": "none"
-	}
+        {
+          "condition": "none",
+          "player": "再见",
+          "text": "再见，我的朋友 !",
+          "action": "none"
+        }
       ]
     },
     "sewerrat": {
@@ -77,10 +76,9 @@
       "intelligence": 2,
       "dexterity": 1,
       "stealth": 2,
-      "location": [
-        {
-          "head": "empty"
-        },
+      "location": [{
+        "head": "empty"
+      },
         {
           "leftArm": "empty"
         },
@@ -103,14 +101,14 @@
           "rightHand": "hands"
         }
       ],
-      "intro": "嘿，老鼠。你死了吗？？\n*你呻吟了一声…*\n你在干什么？！？你不知道睡得离新兵营地这么近很疯狂吗？很快就会有警卫从楼梯上下来抓住你！你最终会被征召入伍！你最好回来。\n顺便问一下，你叫什么名字？",
+      "intro": "嘿，老鼠。你死了吗??\n*你呻吟了一声…*\n你在干什么?!?你不知道睡得离新兵营地这么近很疯狂吗?很快就会有警卫从楼梯上下来抓住你!你最终会被征召入伍!你最好回来。\n顺便问一下，你叫什么名字?",
       "allies": [
-      	"Sewer Rat"
+        "Sewer Rat"
       ],
       "enemies": [
-      	"Recruit"
+        "Recruit"
       ],
-      "items":["pmil1"]
+      "items": ["pmil1"]
     },
     "syndicatemember": {
       "name": "Syndicate Member",
@@ -125,10 +123,9 @@
       "dexterity": 2,
       "stealth": 2,
       "gold": 50,
-      "location": [
-        {
-          "head": "empty"
-        },
+      "location": [{
+        "head": "empty"
+      },
         {
           "leftArm": "empty"
         },
@@ -151,27 +148,26 @@
           "rightHand": "hands"
         }
       ],
-      "conversations": [
- 	{
-	  "condition":"none",
-	  "player":"",
-	  "text":"Hello. Can I help you with something? A service perhaps? Anything and everything you need I have. For a price of course. . . ",
-	  "response":[1, 2],
-	  "action": "none"
-	},
-	{
-	  "condition": "none",
-	  "player":"How about a potion?",
+      "conversations": [{
+        "condition": "none",
+        "player": "",
+        "text": "Hello. Can I help you with something? A service perhaps? Anything and everything you need I have. For a price of course. . . ",
+        "response": [1, 2],
+        "action": "none"
+      },
+        {
+          "condition": "none",
+          "player": "How about a potion?",
           "text": "Of course, I have many at my disposal. Unfortunately, you'd need to be a syndicate member to be able to buy any.",
-	  "response":[2, 3],
-	  "action": "none"
-	},
-	{
-	  "condition": "none",
-	  "player": "Never mind then",
-	  "text": "*bows*\n Until next time",
-	  "action": "none"
-	},
+          "response": [2, 3],
+          "action": "none"
+        },
+        {
+          "condition": "none",
+          "player": "Never mind then",
+          "text": "*bows*\n Until next time",
+          "action": "none"
+        },
         {
           "condition": "none",
           "player": "How do I become a syndicate member?",
@@ -180,15 +176,15 @@
         }
       ],
       "allies": [
-      	"Sewer Rat"
+        "Sewer Rat"
       ],
       "enemies": [
-      	"Recruit",
-	"Brotherhood Member"
+        "Recruit",
+        "Brotherhood Member"
       ],
-      "tradingEmphasis": [ "a", "p" ],
+      "tradingEmphasis": ["a", "p"],
       "sellLimit": 10,
-      "items":[ "pmil2", "pmil1", "wspe1", "agre1", "albt1", "tlap1"]
+      "items": ["pmil2", "pmil1", "wspe1", "agre1", "albt1", "tlap1"]
     },
     "brotherhoodmember": {
       "name": "Brotherhood Member",
@@ -203,10 +199,9 @@
       "dexterity": 1,
       "stealth": 1,
       "gold": 50,
-      "location": [
-        {
-          "head": "empty"
-        },
+      "location": [{
+        "head": "empty"
+      },
         {
           "leftArm": "empty"
         },
@@ -230,42 +225,41 @@
         }
       ],
       "allies": [
-      	"Sewer Rat"
+        "Sewer Rat"
       ],
       "enemies": [
-      	"Recruit",
-	"Syndicate Member"
+        "Recruit",
+        "Syndicate Member"
       ],
-      "tradingEmphasis": [ "w", "f" ],
+      "tradingEmphasis": ["w", "f"],
       "sellLimit": 6,
-      "items":["phli1", "arhl1", "wdag1", "fcom1", "fbum1", "wshs1", "wbrd1", "ashi1"],
-      "conversations": [
- 	{
-	  "condition": "ally",
-	  "player": "",
-	  "text": "Hey, I have a task for you...",
-	  "response": [2, 3],
-	  "action": "none"
-	},
-	{
-	  "condition": "enemy",
-	  "player": "",
-	  "text": "You looking at me?",
-	  "action": "attack"
-	},
-	{
-	  "condition": "none",
-	  "player": "What is it?",
-	  "text": "There's a syndicate member hanging out up north near their headquarters. We've been needing some fresh blood around here. Kill him for me and there'll be some valuable perks in it for you",
-	  "response": [3, 4],
-	  "action": "none"
-	},
-	{
-	  "condition": "none",
-	  "player": "I'm busy",
-	  "text": "Whatever, the offer always stands though",
-	  "action": "none"
-	},
+      "items": ["phli1", "arhl1", "wdag1", "fcom1", "fbum1", "wshs1", "wbrd1", "ashi1"],
+      "conversations": [{
+        "condition": "ally",
+        "player": "",
+        "text": "Hey, I have a task for you...",
+        "response": [2, 3],
+        "action": "none"
+      },
+        {
+          "condition": "enemy",
+          "player": "",
+          "text": "You looking at me?",
+          "action": "attack"
+        },
+        {
+          "condition": "none",
+          "player": "What is it?",
+          "text": "There's a syndicate member hanging out up north near their headquarters. We've been needing some fresh blood around here. Kill him for me and there'll be some valuable perks in it for you",
+          "response": [3, 4],
+          "action": "none"
+        },
+        {
+          "condition": "none",
+          "player": "I'm busy",
+          "text": "Whatever, the offer always stands though",
+          "action": "none"
+        },
         {
           "condition": "none",
           "player": "Sure, why not?",
@@ -286,10 +280,9 @@
       "intelligence": 1,
       "dexterity": 2,
       "stealth": 1,
-      "location": [
-        {
-          "head": "empty"
-        },
+      "location": [{
+        "head": "empty"
+      },
         {
           "leftArm": "empty"
         },
@@ -312,14 +305,14 @@
           "rightHand": "hands"
         }
       ],
-      "intro": "嘿…你还活着吗\n*你发出一声呻吟*\n嘿，伙计，你需要醒过来。警卫很快就会过来，他们用长矛刺穿了最后一个还在睡觉的人。\n*慢慢地，你坐起来*\n就是这样！我要回去了。尽快跟我来。\n顺便说一下，我是索拉尔。你叫什么名字？ ",
+      "intro": "嘿…你还活着吗\n*你发出一声呻吟*\n嘿，伙计，你需要醒过来。警卫很快就会过来，他们用长矛刺穿了最后一个还在睡觉的人。\n*慢慢地，你坐起来*\n就是这样!我要回去了。尽快跟我来。\n顺便说一下，我是索拉尔。你叫什么名字? ",
       "allies": [
-      	"Recruit"
+        "Recruit"
       ],
       "enemies": [
-      	"Sewer Rat"
+        "Sewer Rat"
       ],
-      "items":["pmil1"]
+      "items": ["pmil1"]
     }
   }
 }

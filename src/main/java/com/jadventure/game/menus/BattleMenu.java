@@ -39,15 +39,15 @@ public class BattleMenu extends Menus {
             testSelected(selectedItem);
         }
         if (player.getHealth() == 0) {
-            QueueProvider.offer("You died... Start again? (y/n)");
+            QueueProvider.offer(Define.strDied);
             String reply = QueueProvider.take().toLowerCase();
-            while (!reply.startsWith("y") && !reply.startsWith("n")) {
-                QueueProvider.offer("You died... Start again? (y/n)");
+            while (!reply.startsWith(Define.strYes) && !reply.startsWith(Define.strNo)) {
+                QueueProvider.offer(Define.strDied);
                 reply = QueueProvider.take().toLowerCase();
             }
-            if (reply.startsWith("y")) {
+            if (reply.startsWith(Define.strYes)) {
                 throw new DeathException("restart");
-            } else if (reply.startsWith("n")) {
+            } else if (reply.startsWith(Define.strNo)) {
                 throw new DeathException("close");
             }
         }  else if (opponent.getHealth() == 0) {
@@ -70,17 +70,14 @@ public class BattleMenu extends Menus {
                 Item item = GameBeans.getItemRepository().getItem(itemId);
                 opponent.removeItemFromStorage(item);
                 this.player.getLocation().addItem(item);
-                QueueProvider.offer("Your opponent dropped a " +
-                        item.getName());
+                QueueProvider.offer(String.format(Define.strDrop,item.getName()));
             }
 
             this.player.getLocation().remove(opponent);
             this.player.setGold(this.player.getGold() + opponent.getGold());
-            QueueProvider.offer("You killed a " + opponent.getName() +
-                    "\nYou have gained " + xp + " XP and " +
-                    opponent.getGold() + " gold");
+            QueueProvider.offer(String.format(Define.strKilled,opponent.getName(),xp,opponent.getGold()));
             if (oldLevel < newLevel) {
-                QueueProvider.offer("You've are now level " + newLevel + "!");
+                QueueProvider.offer(String.format(Define.strLevelNow,newLevel));
             }
             CharacterChange cc = new CharacterChange();
             cc.trigger(this.player, "kill", opponent.getName());
@@ -109,8 +106,7 @@ public class BattleMenu extends Menus {
         }
         if(m.getKey().equals(Define.commandDefend)){
             mutateStats(0.5, 1);
-            QueueProvider.offer("\nYou get ready to defend against " +
-                    "the " + opponent.getName() + ".");
+            QueueProvider.offer(String.format(Define.strDefend001,opponent.getName()));
             attack(player, opponent);
             attack(opponent, player);
             resetStats();
@@ -149,15 +145,13 @@ public class BattleMenu extends Menus {
         double minEscapeLevel = (rand.nextInt((upperBound - lowerBound) + 1) +
                 lowerBound) / 100.0;
         if (escapeLevel > minEscapeLevel && (escapeAttempts == 0)) {
-            QueueProvider.offer("You have managed to escape the: " +
-                    attacker.getName());
+            QueueProvider.offer(String.format(Define.strEscape,attacker.getName()));
             return 1;
         } else if (escapeAttempts < 0) {
-            QueueProvider.offer("You have tried to escape too many times!");
+            QueueProvider.offer(Define.strEscape001);
             return escapeAttempts - 1;
         } else {
-            QueueProvider.offer("You failed to escape the: " +
-                    attacker.getName());
+            QueueProvider.offer(String.format(Define.strEscape002,attacker.getName()));
             return escapeAttempts-1;
         }
     }
@@ -170,7 +164,7 @@ public class BattleMenu extends Menus {
         double critCalc = random.nextDouble();
         if (critCalc < attacker.getCritChance()) {
             damage += damage;
-            QueueProvider.offer("Crit hit! Damage has been doubled!");
+            QueueProvider.offer(Define.strAttack003);
         }
         int healthReduction = (int) ((((3 * attacker.getLevel() / 50 + 2) *
                 damage * damage / (defender.getArmour() + 1)/ 100) + 2) *
@@ -179,13 +173,13 @@ public class BattleMenu extends Menus {
         if (defender.getHealth() < 0) {
             defender.setHealth(0);
         }
-        QueueProvider.offer(healthReduction + " damage dealt!");
-        if (attacker instanceof Player) {
-            QueueProvider.offer("The " + defender.getName() + "'s health is " +
-                    defender.getHealth());
+        QueueProvider.offer(String.format(Define.strAttack001,healthReduction));
+        QueueProvider.offer(String.format(Define.strAttack002,defender.getName(),defender.getHealth()));
+        /*if (attacker instanceof Player) {
+            QueueProvider.offer(String.format(Define.strAttack002,defender.getName(),defender.getHealth()));
         } else {
-            QueueProvider.offer("Your health is " + defender.getHealth());
-        }
+            QueueProvider.offer(String.format(Define.strAttack002,defender.getName(),defender.getHealth()));
+        }*/
     }
 
     private void mutateStats(double damageMult, double armourMult) {
@@ -202,7 +196,7 @@ public class BattleMenu extends Menus {
 
     private void equip() {
         player.printStorage();
-        QueueProvider.offer("What item do you want to use?");
+        QueueProvider.offer(Define.strItemsUse);
         String itemName = QueueProvider.take();
         if (!itemName.equalsIgnoreCase("back")) {
             player.equipItem(itemName);
@@ -211,7 +205,7 @@ public class BattleMenu extends Menus {
 
     private void unequip() {
         player.printEquipment();
-        QueueProvider.offer("What item do you want to unequip?");
+        QueueProvider.offer(Define.strEquip001);
         String itemName = QueueProvider.take();
         if (!itemName.equalsIgnoreCase("back")) {
             player.dequipItem(itemName);
@@ -219,8 +213,7 @@ public class BattleMenu extends Menus {
     }
 
     private void viewStats() {
-        QueueProvider.offer("\nWhat is your command? ex. View stats(vs), " +
-                "View Backpack(vb), View Equipment(ve) ");
+        QueueProvider.offer(Define.strView001);
         String input = QueueProvider.take();
         switch (input) {
             case "vs":

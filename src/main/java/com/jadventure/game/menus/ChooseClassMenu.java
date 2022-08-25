@@ -19,7 +19,7 @@ public class ChooseClassMenu extends Menus {
         this.menuItems.add(new MenuItem(Define.commandSewerRat, "西里亚地下组织的成员"));
 
         while(true) {
-            QueueProvider.offer(Define.narratorSelectRole);
+            QueueProvider.offer(Define.strChioceRole);
             MenuItem selectedItem = displayMenu(this.menuItems);
             if(testOption(selectedItem)) {
             	break;
