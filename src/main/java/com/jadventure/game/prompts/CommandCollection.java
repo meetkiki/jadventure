@@ -120,14 +120,14 @@ public enum CommandCollection {
     public void command_m() {
         List<Monster> monsterList = player.getLocation().getMonsters();
         if (monsterList.size() > 0) {
-            QueueProvider.offer("Monsters around you:");
-            QueueProvider.offer("----------------------------");
+            QueueProvider.offer(Define.strBattle004);
+            QueueProvider.offer(Define.strSysLine);
             for (Monster monster : monsterList) {
                 QueueProvider.offer(monster.monsterType);
             }
-            QueueProvider.offer("----------------------------");
+            QueueProvider.offer(Define.strSysLine);
         } else {
-            QueueProvider.offer("There are no monsters around you'n");
+            QueueProvider.offer(Define.strBattle005);
         }
     }
 
@@ -167,18 +167,18 @@ public enum CommandCollection {
                         if (monsters.size() > 0) {
                             int posMonster = random.nextInt(monsters.size());
                             String monster = monsters.get(posMonster).monsterType;
-                            QueueProvider.offer(String.format(Define.strAttacking,monster));
+                            QueueProvider.offer(String.format(Define.strBattleing,monster));
                             player.attack(monster);
                         }
                     }
                 } else {
-                    QueueProvider.offer("You cannot walk through walls.");
+                    QueueProvider.offer(Define.strToError);
                 }
             } else {
-                QueueProvider.offer("The is no exit that way.");
+                QueueProvider.offer(Define.strToError001);
             }
         } catch (IllegalArgumentException | NullPointerException ex) {
-            QueueProvider.offer("That direction doesn't exist");
+            QueueProvider.offer(Define.strToError002);
         }
     }
 
@@ -214,7 +214,7 @@ public enum CommandCollection {
                 player.printStorage();
                 break;
             default:
-                QueueProvider.offer(String.format(Define.strUnknowPrompt,arg));
+                QueueProvider.offer(String.format(Define.commandUnKnow,arg));
                 break;
         }
     }
@@ -253,7 +253,7 @@ public enum CommandCollection {
         if (healthMax > 0) {
             player.setHealthMax(healthMax);
         } else {
-            QueueProvider.offer("Maximum health must be possitive");
+            QueueProvider.offer(Define.strRoleHealth);
         }
     }
 
@@ -263,7 +263,7 @@ public enum CommandCollection {
         if (health > 0) {
             player.setHealth(health);
         } else {
-            QueueProvider.offer("Health must be possitive");
+            QueueProvider.offer(Define.strRoleHealth001);
         }
     }
 
@@ -295,7 +295,7 @@ public enum CommandCollection {
             player.getLocation().print();
         } catch (NullPointerException e) {
             player.setLocation(oldLocation);
-            QueueProvider.offer("There is no such location");
+            QueueProvider.offer(Define.strToError003);
         }
     }
 
@@ -317,7 +317,7 @@ public enum CommandCollection {
         if (npc != null) {
             cm.startConversation(npc, player);
         } else {
-            QueueProvider.offer("Unable to talk to " + arg);
+            QueueProvider.offer(String.format(Define.strNPCsTalkError,arg));
         }
     }
 

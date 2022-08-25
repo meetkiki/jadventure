@@ -149,7 +149,7 @@ public class Storage {
 
     public String toString() {
         if (this.itemStacks.isEmpty()) {
-            return Define.strEmpty;
+            return Define.strItemsEmpty;
         } else {
             String content = "";
             for (ItemStack item : this.itemStacks) {
@@ -171,7 +171,7 @@ public class Storage {
 
     public String displayWithValue(int playerLuck, int playerInt) {
         if (itemStacks.isEmpty()) {
-            return Define.strEmpty;
+            return Define.strItemsEmpty;
         } else {
             String content = "";
             if(playerLuck > 0){

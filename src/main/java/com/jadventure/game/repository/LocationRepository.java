@@ -157,7 +157,7 @@ public class LocationRepository {
             Gson gson = new Gson();
             gson.toJson(jsonObject, writer);
             writer.close();
-            QueueProvider.offer(Define.strSaveLocations);
+            QueueProvider.offer(Define.strLocationsSave);
         } catch (IOException ex) {
             QueueProvider.offer("Unable to save to file " + fileName);
         }

@@ -28,7 +28,7 @@ public class Game {
                   newGameStart(player);
                   break;
               case "old":
-                  QueueProvider.offer(String.format(Define.strWelcome,player.getName()));
+                  QueueProvider.offer(String.format(Define.strSysWelcome,player.getName()));
                   QueueProvider.offer("");
                   player.getLocation().print();
                   gamePrompt(player);
@@ -58,7 +58,7 @@ public class Game {
         LocationRepository locationRepo = GameBeans.getLocationRepository(player.getName());
         this.player.setLocation(locationRepo.getInitialLocation());
         player.save();
-        QueueProvider.offer(String.format(Define.strWelcome001,player.getName()));
+        QueueProvider.offer(String.format(Define.strSysWelcome001,player.getName()));
         player.getLocation().print();
         gamePrompt(player);
     }
@@ -73,7 +73,7 @@ public class Game {
         boolean continuePrompt = true;
         try {
             while (continuePrompt) {
-                QueueProvider.offer(Define.strPrompt);
+                QueueProvider.offer(Define.command);
                 String command = QueueProvider.take().toLowerCase();
                 continuePrompt = parser.parse(player, command);
             }

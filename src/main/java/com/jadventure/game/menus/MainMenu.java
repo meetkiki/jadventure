@@ -59,7 +59,7 @@ public class MainMenu extends Menus implements Runnable {
                 }
             }
         } while(continuing);
-        QueueProvider.offer(Define.strEXIT);
+        QueueProvider.offer(Define.strSysExit);
     }
 
     private static boolean testOption(MenuItem m) throws DeathException {
@@ -74,7 +74,7 @@ public class MainMenu extends Menus implements Runnable {
             deleteProfileFromMenu();
         }
         if(key.equals(Define.commandExit)){
-            QueueProvider.offer(Define.strGoodbye);
+            QueueProvider.offer(Define.strSysGoodbye);
             return false;
         }
         return true;
@@ -89,7 +89,7 @@ public class MainMenu extends Menus implements Runnable {
         Player player = null;
         do {
             listProfiles();
-            QueueProvider.offer(Define.strChioceRecord);
+            QueueProvider.offer(Define.strRecordChioce);
             key = QueueProvider.take();
             if (key.equals("exit") || key.equals("back")) {
                 return;

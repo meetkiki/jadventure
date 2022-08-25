@@ -305,9 +305,9 @@ public abstract class Entity {
 
     public void printEquipment() {
         QueueProvider.offer("\n------------------------------------------------------------");
-        QueueProvider.offer(Define.strEquippedItems);
+        QueueProvider.offer(Define.strItemsEquip002);
         if (equipment.keySet().size() == 0) {
-            QueueProvider.offer(Define.strEmpty);
+            QueueProvider.offer(Define.strItemsEmpty);
         } else {
             int i = 0;
             Item hands = itemRepo.getItem("hands");
@@ -330,7 +330,7 @@ public abstract class Entity {
                 }
             }
             if (i == equipment.keySet().size()) {
-                QueueProvider.offer(Define.strEmpty);
+                QueueProvider.offer(Define.strItemsEmpty);
             }
         }
         QueueProvider.offer("------------------------------------------------------------");

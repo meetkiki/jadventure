@@ -338,7 +338,7 @@ public class Player extends Entity {
             writer.close();
             locationRepo = GameBeans.getLocationRepository(getName());
             locationRepo.writeLocations();
-            QueueProvider.offer(Define.strSaveData);
+            QueueProvider.offer(Define.strDataSave);
         } catch (IOException ex) {
             QueueProvider.offer("\nUnable to save to file '" + fileName + "'.");
         }
@@ -375,9 +375,9 @@ public class Player extends Entity {
             Item item = items.get(0);
             addItemToStorage(item);
             location.removeItem(item);
-            QueueProvider.offer(String.format(Define.strPickUp,item.getName()));
+            QueueProvider.offer(String.format(Define.strRolePick,item.getName()));
         }else{
-            QueueProvider.offer(String.format(Define.strPickUpNull,itemName));
+            QueueProvider.offer(String.format(Define.strRolePickNull,itemName));
         }
     }
 
@@ -407,13 +407,13 @@ public class Player extends Entity {
             Item item = items.get(0);
             if (getLevel() >= item.getLevel()) {
                 Map<String, String> change = equipItem(item.getPosition(), item);
-                QueueProvider.offer(String.format(Define.strEquipped,item.getName()));
+                QueueProvider.offer(String.format(Define.strItemsEquipped,item.getName()));
                 printStatChange(change);
             } else {
-                QueueProvider.offer(Define.strItemLevel);
+                QueueProvider.offer(Define.strItemsLevel);
             }
         } else {
-            QueueProvider.offer(Define.strNullItem);
+            QueueProvider.offer(Define.strItemsFindNull);
         }
     }
 
@@ -422,7 +422,7 @@ public class Player extends Entity {
          if (!items.isEmpty()) {
             Item item = items.get(0);
             Map<String, String> change = unequipItem(item);
-            QueueProvider.offer(String.format(Define.strUnEquipped,item.getName()));
+            QueueProvider.offer(String.format(Define.strItemsUnEquip001,item.getName()));
 	        printStatChange(change);
          }
     }

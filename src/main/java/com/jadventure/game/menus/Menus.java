@@ -37,7 +37,7 @@ public class Menus {
         if (commandMap.containsKey(command.toLowerCase())) {
             return commandMap.get(command.toLowerCase());
         } else {
-            QueueProvider.offer(String.format(Define.strUnknowPrompt,command));
+            QueueProvider.offer(String.format(Define.commandUnKnow,command));
             return this.displayMenu(m);
         }
     }

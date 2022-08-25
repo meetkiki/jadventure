@@ -87,7 +87,7 @@ public class CommandParser {
                             }
                         }
                     } else {
-                        QueueProvider.offer(String.format(Define.strUnknowPrompt,userCommand));
+                        QueueProvider.offer(String.format(Define.commandUnKnow,userCommand));
                         return true;
                     }
                 } else if (method.getParameterTypes()[0] == String.class) {
@@ -113,7 +113,7 @@ public class CommandParser {
                 return true;
             }
         }
-        QueueProvider.offer(String.format(Define.strUnknowPrompt,userCommand));
+        QueueProvider.offer(String.format(Define.commandUnKnow,userCommand));
         return true;
     }
 

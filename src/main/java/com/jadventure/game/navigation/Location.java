@@ -176,7 +176,7 @@ public class Location implements ILocation {
         QueueProvider.offer("    " + getDescription());
         List<Item> items = getItems();
         if (!items.isEmpty()) {
-            QueueProvider.offer(Define.strItems);
+            QueueProvider.offer(Define.strItemsFind);
             for (Item item : items) {
                 QueueProvider.offer("    " + item.getName());
             }
