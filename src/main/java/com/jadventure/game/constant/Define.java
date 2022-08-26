@@ -67,7 +67,7 @@ public class Define {
     public static String strNPCsTalkError="不能与[%s]对话.";//Unable to talk to " + arg
 
     public static String strRecord="记录:";//Profiles:
-    public static String strRecordChioce="选择要加载的配置文件。输入“后退”返回。";//\nSelect a profile to load. Type 'back' to go back.
+    public static String strRecordChioce="选择要加载的配置文件.输入'后退'返回.";//\nSelect a profile to load. Type 'back' to go back.
     public static String strRecordDelete="删除存档";//Deletes an existing Game
     public static String strRecordFindNull="找不到[%s]记录.";//Unable to open file '" + fileName
     public static String strRecordLoad="加载存档";//Loads an existing Game
@@ -151,4 +151,20 @@ public class Define {
             "精神: %s\n" +
             "经验: %s\n" +
             "等级: %s";
+
+    public static String strRecordNull="没有存档,请开始新的游戏.";
+    public static String strRecordFindNull001="找到不到存档,请重试.";
+    public static String strRecordNull001="没有存档!";
+    public static String strRecordChioce001="选择要删除的配置文件.输入'后退'返回.";
+    public static String strRecordDelete001="确定要删除[%s]?(y/n)";
+    public static String strRecordDelete002="存档[%s]已经删除.";
+    public static String strRecordDelete003="取消删除存档[%s]";
+    public static String strSysHelp="\nlist:列出玩家当前拥有的物品\n" +
+            "add：添加新项目\n"+
+            "remove：删除项目\n"+
+            "help：打印此信息\n"+
+            "exit：退出背包调试菜单\n";
+    public static String strItemsNull="Invalid item name";
+
+    public static String strSys001="必须使用测试配置文件进行调试";//Must be using test profile to debug
 }

@@ -78,7 +78,7 @@ public class MainMenu extends Menus implements Runnable {
     private static void loadProfileFromMenu() throws DeathException {
         String key;
         if (isProfileDirEmpty()) {
-            QueueProvider.offer("\nThere are no profiles to load. Please start a new game instead.");
+            QueueProvider.offer(Define.strRecordNull);
             return;
         }
         Player player = null;
@@ -91,7 +91,7 @@ public class MainMenu extends Menus implements Runnable {
             } else if (Player.profileExists(key)) {
                 player = Player.load(key);
             } else {
-                QueueProvider.offer("That user doesn't exist. Try again.");
+                QueueProvider.offer(Define.strRecordFindNull001);
             }
         } while (player == null);
         new Game(player, "old");
@@ -101,31 +101,31 @@ public class MainMenu extends Menus implements Runnable {
         String key;
         while (true) {
             if (isProfileDirEmpty()) {
-                QueueProvider.offer("\nThere are no profiles to delete.");
+                QueueProvider.offer(Define.strRecordNull001);
                 return;
             }
             listProfiles();
-            QueueProvider.offer("\nWhich profile do you want to delete? Type 'back' to go back.");
+            QueueProvider.offer(Define.strRecordChioce001);
             key = QueueProvider.take();
             if ((key.equals("exit") || key.equals("back"))) {
                 return;
             }
             if (Player.profileExists(key)) {
                 String profileName = key;
-                QueueProvider.offer("Are you sure you want to delete " + profileName + "? y/n");
+                QueueProvider.offer(String.format(Define.strRecordDelete001,profileName));
                 key = QueueProvider.take();
                 if ((key.equals("exit") || key.equals("back"))) {
                     return;
                 } else if (key.equals("y")) {
                     File profile = new File("json/profiles/" + profileName);
                     deleteDirectory(profile);
-                    QueueProvider.offer(profileName + " has been deleted.");
+                    QueueProvider.offer(String.format(Define.strRecordDelete002,profileName));
                     return;
                 } else {
-                    QueueProvider.offer(profileName + " will NOT be deleted.");
+                    QueueProvider.offer(String.format(Define.strRecordDelete003,profileName));
                 }
             } else {
-                QueueProvider.offer("That user doesn't exist. Try again.");
+                QueueProvider.offer(Define.strRecordNull001);
             }
         }
     }
@@ -151,7 +151,7 @@ public class MainMenu extends Menus implements Runnable {
 
     private static void listProfiles() {
         if (isProfileDirEmpty()) {
-            QueueProvider.offer("No profiles found.");
+            QueueProvider.offer(Define.strRecordNull001);
             return;
         }
         File file = new File("json/profiles");

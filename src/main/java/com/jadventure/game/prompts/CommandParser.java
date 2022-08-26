@@ -74,7 +74,7 @@ public class CommandParser {
                                 if ("test".equals(player.getName())) {
                                     method.invoke(com);
                                 } else {
-                                    QueueProvider.offer("Must be using test profile to debug");
+                                    QueueProvider.offer(Define.strSys001);
                                 }
                             } else {
                                 method.invoke(com);
@@ -97,7 +97,7 @@ public class CommandParser {
                             if ("test".equals(player.getName())) {
                                 method.invoke(com, arg);
                             } else {
-                                QueueProvider.offer("Must be using test profile to debug");
+                                QueueProvider.offer(Define.strSys001);
                             }
                         } else {
                             method.invoke(com, arg);

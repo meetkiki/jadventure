@@ -15,15 +15,14 @@ import com.jadventure.game.QueueProvider;
  *
  * Items are added by their names and removed by their display name
  */
+/**
+ *背包调试提示用于编辑背包内容
+ *调试期间
+ *项目按其名称添加，并按其显示名称删除
+ */
 public class BackpackDebugPrompt{
     // @Resource
     protected static ItemRepository itemRepo = GameBeans.getItemRepository();
-
-    private static String helpText = "\nlist: Lists the current item the player has\n"+
-                                     "add: Add a new item\n"+
-                                     "remove: Remove an item\n"+
-                                     "help: Prints this info\n"+
-                                     "exit: Exits the BackpackDebugMenu\n";
 
     public BackpackDebugPrompt(Player player){
         boolean continuePrompt = true;
@@ -54,11 +53,11 @@ public class BackpackDebugPrompt{
                 player.printBackPack();
             }
             else if (command.equals("help"))
-                QueueProvider.offer(helpText);
+                QueueProvider.offer(Define.strSysHelp);
             else if (command.equals("exit"))
                 continuePrompt = false;
         } catch (NumberFormatException e){
-            QueueProvider.offer("Invalid item name");
+            QueueProvider.offer(Define.strItemsNull);
         }
 
         return continuePrompt;
