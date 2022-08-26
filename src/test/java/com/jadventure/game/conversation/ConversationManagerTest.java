@@ -23,7 +23,7 @@ public class ConversationManagerTest {
         cm = ConversationManager.getInstance();
     }
 
-    @Test 
+    @Test
     public void testCreation() {
         assertNotNull(cm);
         assertTrue(cm instanceof ConversationManager);
@@ -43,7 +43,9 @@ public class ConversationManagerTest {
                 Collections.<Integer>emptyList(),
                 ActionType.NONE
         );
-        assertTrue(ConversationManager.matchesConditions(npc, player, line));
+        boolean b = ConversationManager.matchesConditions(npc, player, line);
+        System.out.println(b);
+        assertTrue(b);
     }
 
     @Test

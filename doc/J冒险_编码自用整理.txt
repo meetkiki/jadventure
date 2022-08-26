@@ -24,6 +24,7 @@
 		g w - 向西
 		g u - 向上
 		g d - 向下
+	查看物品：i <itemName>
 	要拾取项目：p <itemName>
 	要删除项目：d <itemName>
 	装备/取消装备项目：e <itemName>

@@ -48,8 +48,8 @@ public class Game {
 
     /**
      *开始新游戏。
-     *它首先打印介绍文本，并询问玩家的姓名
-     *性格并欢迎他/她。之后，它进入正常的游戏提示。
+     *它首先打印介绍文本,并询问玩家的姓名
+     *性格并欢迎他/她。之后,它进入正常的游戏提示。
      */
     public void newGameStart(Player player) throws DeathException {
         QueueProvider.offer(player.getIntro());

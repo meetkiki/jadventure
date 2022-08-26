@@ -24,7 +24,7 @@ public class SwaggerConfig {
 
     @Bean
     public Docket createRestApi() {
-        return new Docket(DocumentationType.SWAGGER_2) // 注意此处改动，需要将SWAGGER_2改成OAS_30
+        return new Docket(DocumentationType.SWAGGER_2) // 注意此处改动,需要将SWAGGER_2改成OAS_30
                 .apiInfo(apiInfo()).select()
                 //.apis(RequestHandlerSelectors.basePackage("com.zfast.yugioh.controller")) // 扫描包
                 //.apis(RequestHandlerSelectors.withClassAnnotation(Api.class)) // 扫描类注解

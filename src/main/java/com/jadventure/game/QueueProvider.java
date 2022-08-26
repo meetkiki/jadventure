@@ -42,7 +42,7 @@ public class QueueProvider {
                     + File.separator+"cnGameDes.properties"
             );
         } catch (Exception e) {
-            throw new DeathException("获取配置文件失败，"+e.getMessage());
+            throw new DeathException("获取配置文件失败,"+e.getMessage());
         }
     }
 

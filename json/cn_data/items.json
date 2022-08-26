@@ -48,7 +48,7 @@
     "pmil2": {
       "type": "potion",
       "name": "超级牛奶",
-      "description": "这牛奶一定来自超级奶牛，因为它是非常美味的牛奶",
+      "description": "这牛奶一定来自超级奶牛,因为它是非常美味的牛奶",
       "position": "mouth",
       "level": 2,
       "properties": {
@@ -157,7 +157,7 @@
     "ashi1": {
       "type": "armour",
       "name": "木盾",
-      "description": "木盾，小心碎片!",
+      "description": "木盾,小心碎片!",
       "position": "leftHand",
       "level": 1,
       "properties": {

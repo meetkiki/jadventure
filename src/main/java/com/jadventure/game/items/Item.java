@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import com.jadventure.game.QueueProvider;
+import com.jadventure.game.constant.Define;
 import com.jadventure.game.entities.EquipmentLocation;
 
 /**
@@ -96,8 +97,7 @@ public class Item {
     }
 
     public void display() {
-        QueueProvider.offer("Name: " + name +
-                "\nDescription: " + description + "\nLevel: " + level);
+        QueueProvider.offer(String.format(Define.strItemsView,name,description,level));
         for (Map.Entry<String, Integer> entry : properties.entrySet()) {
             QueueProvider.offer(entry.getKey() + ": " + entry.getValue());
         }

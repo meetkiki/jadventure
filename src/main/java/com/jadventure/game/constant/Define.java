@@ -39,20 +39,12 @@ public class Define {
     public static String strBattle005="附近没有怪物了";//There are no monsters around you'n
     public static String strBattleing="一只[%s]正在攻击你!";//A %s is attacking you!
 
-    public static String strBuy="从[%s]购买.";//"Buy from " + npc.getName();
-    public static String strBuy001="%s物品:\t%s金币:%s";//Guide's items:    Guide's gold:100
-    public static String strBuy002="售出给[%s].";//Sell to
-    public static String strBuy003="你拥有[%s]金币.\n你想买点啥?";//You have " + player.getGold() + " gold coins.\nWhat do you want to buy?
-    //zgnTodo 暂不清楚_test001
-    public static String strBuy004="购买了一份[%s]消费了[%s].";//QueueProvider.offer("You have bought a " + item.getName() + " for " + item.getProperties().get("value") + " gold coins.");
-    public static String strBuy005="还剩[%s]金币.";//QueueProvider.offer("You now have " + player.getGold() + " gold coins remaining.");
-    public static String strBuy006="穷鬼走开!";//You do not have enough money!
-    public static String strBuy007="[%s]不存在，或者此角色不拥有该物品.";//Either this item doesn't exist or this character does not own that item
-
     public static String strDataSave="您的游戏数据已保存。";//\nYour game data was saved
 
     public static String strFoeDrop="掉落了一个[%s].";//Your opponent dropped a// .
+    public static String strFoeNull="未发现敌人.";//Opponent not found
 
+    public static String strItemsDrop="掉落了[%s].";//item.getName() + " dropped
     public static String strItemsEmpty="--空--";//--Empty--
     public static String strItemsEquip="装备物品";
     public static String strItemsEquip001="想要穿上什么装备?";//What item do you want to unequip?
@@ -64,6 +56,10 @@ public class Define {
     public static String strItemsUnEquip="卸下物品";
     public static String strItemsUnEquip001="你卸下了[%s].";//unequipped
     public static String strItemsUse="想要是用什么装备?";//What item do you want to use?
+    public static String strItemsView="名称: %s\n" +
+                                        "描述: %s\n" +
+                                        "要求等级: %s.";//Item doesn't exist within your view
+    public static String strItemsViewNull="未发现物品.";//Item doesn't exist within your view
 
     public static String strLocationsSave="游戏位置已保存。";//The game locations were saved.
 
@@ -73,11 +69,14 @@ public class Define {
     public static String strRecord="记录:";//Profiles:
     public static String strRecordChioce="选择要加载的配置文件。输入“后退”返回。";//\nSelect a profile to load. Type 'back' to go back.
     public static String strRecordDelete="删除存档";//Deletes an existing Game
+    public static String strRecordFindNull="找不到[%s]记录.";//Unable to open file '" + fileName
     public static String strRecordLoad="加载存档";//Loads an existing Game
+    public static String strRecordSaveError="无法保存[%s]记录.";//Unable to save to file '" + fileName
     public static String strRecordStart="开始新的旅程";//Starts a new Game
 
     public static String strRoleChioce="选择角色";
     public static String strRoleChioce001="你的选择是?";//\nWhat is your choice?
+    public static String strRoleChioce002="无效角色";//Not a valid class
     public static String strRoleDefend="抵御[%s]的进攻";
     public static String strRoleDefend001="已经准备好抵抗[%s]了.";//You get ready to defend against the Goblin.
     public static String strRoleDied="角色阵亡...重新开始?(y/n)";//You died... Start again? (y/n)
@@ -92,7 +91,6 @@ public class Define {
     public static String strRoleView="视察自身人物的状态";
     public static String strRoleWin="通过击杀[%s]\n你获得了[%s]经验以及[%s]金币";//You killed a \nYou have gained XP and gold
 
-    public static String strSell="售出给[%s].";//Sell to
     public static String strSysExit="退出";//EXIT!
     public static String strSysGoodbye="再见,冒险家!";//Goodbye!
     public static String strSysLine="----------------------------";
@@ -112,4 +110,45 @@ public class Define {
     public static String strToError001="走到尽头了.";//The is no exit that way.
     public static String strToError002="错误的方向指令.";//That direction doesn't exist
     public static String strToError003="错误的地图位置.";//Heading up
+
+    public static String strTradeBuy="从[%s]购买.";//"Buy from " + npc.getName();
+    public static String strTradeBuy001="%s物品:\t%s金币:%s";//Guide's items:    Guide's gold:100
+    public static String strTradeBuy002="售出给[%s].";//Sell to
+    public static String strTradeBuy003="你拥有[%s]金币.\n你想买点啥?";//You have " + player.getGold() + " gold coins.\nWhat do you want to buy?
+    //zgnTodo 暂不清楚_test001
+    public static String strTradeBuy004="购买了一份[%s]消费了[%s].";//QueueProvider.offer("You have bought a " + item.getName() + " for " + item.getProperties().get("value") + " gold coins.");
+    public static String strTradeBuy005="还剩[%s]金币.";//QueueProvider.offer("You now have " + player.getGold() + " gold coins remaining.");
+    public static String strTradeBuy006="[%s]金币不够!";//You do not have enough money!
+    public static String strTradeBuy007="[%s]不存在,或者此角色不拥有该物品.";//Either this item doesn't exist or this character does not own that item
+    public static String strTradeBuy008="- %s: 每%s个%s金币\n";//- 生命药剂 : 1 at 50 gold coins each
+    public static String strTradeBuy009="- %s: 每%s个%s金币\n";//- 生命药剂 : 1 at 50 gold coins each
+    public static String strTradeCurrency="[%s]的金币:%s,[%s]拥有的物品:\n";
+    public static String strTradeCurrency001="[%s]还剩%s金币.";
+    public static String strTradeCurrencySell="[%s]的金币:%s,\n你想卖什么?";
+    public static String strTradeSell="售出给[%s].";//Sell to
+    public static String strTradeSelling="[%s]以%s金币售出了[%s].";
+
+    public static String strEntityHead="头";
+    public static String strEntityChest="胸部";
+    public static String strEntityLeftArm="左臂";
+    public static String strEntityLeftHand="左手";
+    public static String strEntityRightArm="右臂";
+    public static String strEntityRightHand="右手";
+    public static String strEntityBothHands="两手";
+    public static String strEntityBothArms="双臂";
+    public static String strEntityLegs="腿";
+    public static String strEntityFeet="脚";
+    public static String strRoleView001="玩家昵称: %s\n" +
+            "职业: %s\n" +
+            "当前武器: %s\n" +
+            "金币: %s\n" +
+            "当前生命值/最大值: %s/%s\n" +
+            "伤害/盔甲数: %s/%s\n" +
+            "力量: %s\n" +
+            "智力: %s\n" +
+            "敏捷: %s\n" +
+            "幸运: %s\n" +
+            "精神: %s\n" +
+            "经验: %s\n" +
+            "等级: %s";
 }

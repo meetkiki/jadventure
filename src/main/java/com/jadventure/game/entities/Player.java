@@ -52,8 +52,8 @@ import com.jadventure.game.repository.LocationRepository;
 /**
  *这个类处理玩家及其所有属性。
  *任何更改角色或与角色交互的方法都应该
- *放在这个类中。如果方法一般处理实体，或
- *对于不是玩家唯一的变量，将其放在实体类中。
+ *放在这个类中。如果方法一般处理实体,或
+ *对于不是玩家唯一的变量,将其放在实体类中。
  */
 public class Player extends Entity {
     // @Resource
@@ -108,7 +108,12 @@ public class Player extends Entity {
         File file = new File(getProfileFileName(name));
         return file.exists();
     }
-
+    /**
+     * 通过名字加载数据
+     * @author  zgn
+     * @date    2022/8/26 0026
+     * @param	name
+     */
     public static Player load(String name) {
         player = new Player();
         JsonParser parser = new JsonParser();
@@ -171,7 +176,7 @@ public class Player extends Entity {
             reader.close();
             setUpCharacterLevels();
         } catch (FileNotFoundException ex) {
-            QueueProvider.offer( "Unable to open file '" + fileName + "'.");
+            QueueProvider.offer(String.format(Define.strRecordFindNull,fileName));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -224,17 +229,17 @@ public class Player extends Entity {
             player.setLuck(luck);
             player.setStealth(json.get("stealth").getAsInt());
             player.setIntro(json.get("intro").getAsString());
-            if (player.getName().equals("Recruit")) {
-                player.type = "Recruit";
-            } else if (player.getName().equals("Sewer Rat")) {
-                player.type = "Sewer Rat";
+            if (player.getName().equals(Define.commandRecruit)) {
+                player.type = Define.commandRecruit;
+            } else if (player.getName().equals(Define.commandSewerRat)) {
+                player.type = Define.commandSewerRat;
             } else {
-                QueueProvider.offer("Not a valid class");
+                QueueProvider.offer(Define.strRoleChioce002);
             }
             reader.close();
             setUpCharacterLevels();
         } catch (FileNotFoundException ex) {
-            QueueProvider.offer( "Unable to open file '" + fileName + "'.");
+            QueueProvider.offer(String.format(Define.strRecordFindNull,fileName));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -261,26 +266,32 @@ public class Player extends Entity {
         if (weaponName.equals(null)) {
             weaponName = "hands";
         }
-        String message = "\nPlayer name: " + getName();
-              message += "\nType: " + type;
-              message += "\nCurrent weapon: " + weaponName;
-              message += "\nGold: " + getGold();
-              message += "\nHealth/Max: " + getHealth() + "/" + getHealthMax();
-              message += "\nDamage/Armour: " + getDamage() + "/" + getArmour();
-              message += "\nStrength: " + getStrength();
-              message += "\nIntelligence: " + getIntelligence();
-              message += "\nDexterity: " + getDexterity();
-              message += "\nLuck: " + getLuck();
-              message += "\nStealth: " + getStealth();
-              message += "\nXP: " + getXP();
-              message += "\n" + getName() + "'s level: " + getLevel();
-        QueueProvider.offer(message);
+        QueueProvider.offer(String.format(Define.strRoleView001,
+                getName(),
+                type,
+                weaponName,
+                getGold(),
+                getHealth(),getHealthMax(),
+                getDamage(),getArmour(),
+                getStrength(),
+                getIntelligence(),
+                getDexterity(),
+                getLuck(),
+                getStealth(),
+                getXP(),
+                getLevel()
+        ));
     }
 
     public void printBackPack() {
         storage.display();
     }
 
+    /**
+     * 保存
+     * @author  zgn
+     * @date    2022/8/26 0026
+     */
     public void save() {
         Gson gson = new Gson();
         JsonObject jsonObject = new JsonObject();
@@ -340,10 +351,17 @@ public class Player extends Entity {
             locationRepo.writeLocations();
             QueueProvider.offer(Define.strDataSave);
         } catch (IOException ex) {
-            QueueProvider.offer("\nUnable to save to file '" + fileName + "'.");
+            QueueProvider.offer(String.format(Define.strRecordSaveError,fileName));
         }
     }
 
+    /**
+     * 通过名字查找物品
+     * @author  zgn
+     * @date    2022/8/26 0026
+     * @param	itemName
+     * @param	itemList
+     */
     public List<Item> searchItem(String itemName, List<Item> itemList) {
         List<Item> items = new ArrayList<>();
         for (Item item : itemList) {
@@ -397,7 +415,7 @@ public class Player extends Entity {
             }
             removeItemFromStorage(itemToDrop);
             location.addItem(itemToDrop);
-            QueueProvider.offer(item.getName() + " dropped");
+            QueueProvider.offer(String.format(Define.strItemsDrop,item.getName()));
         }
     }
 
@@ -479,7 +497,7 @@ public class Player extends Entity {
             Item item = itemMap.get(0);
             item.display();
         } else {
-            QueueProvider.offer("Item doesn't exist within your view.");
+            QueueProvider.offer(Define.strItemsViewNull);
         }
     }
 
@@ -516,7 +534,7 @@ public class Player extends Entity {
         } else if (npcOpponent != null) {
             new BattleMenu(npcOpponent, this);
         } else {
-             QueueProvider.offer("Opponent not found");
+            QueueProvider.offer(Define.strFoeNull);
         }
     }
 

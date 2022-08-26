@@ -26,8 +26,8 @@ public class Trading {
 
     public void trade(boolean buy, boolean sell) {
         List<MenuItem> tradeList = new ArrayList<>();
-        String buyCommand = String.format(Define.strBuy,npc.getName());
-        String sellCommand = String.format(Define.strSell,npc.getName());
+        String buyCommand = String.format(Define.strTradeBuy,npc.getName());
+        String sellCommand = String.format(Define.strTradeSell,npc.getName());
         if (buy) {
             tradeList.add(new MenuItem(buyCommand, null));
         }
@@ -47,12 +47,12 @@ public class Trading {
         }
         trade(buy, sell);
     }
-    
+
     public void playerBuy() {
-        QueueProvider.offer(String.format(Define.strBuy001,npc.getName(),npc.getName(),npc.getGold()));
+        QueueProvider.offer(String.format(Define.strTradeBuy001,npc.getName(),npc.getName(),npc.getGold()));
         QueueProvider.offer(npc.getStorage().displayWithValue(0, 0));
 
-        QueueProvider.offer(String.format(Define.strBuy003,player.getGold()));
+        QueueProvider.offer(String.format(Define.strTradeBuy003,player.getGold()));
         String itemName = QueueProvider.take();
 
         if ("exit".equals(itemName) || "back".equals(itemName)) {
@@ -62,24 +62,24 @@ public class Trading {
         Item item = tradeItem(npc, player, itemName);
         if (item != null) {
             if (item != itemRepo.getItem("empty")) {
-                QueueProvider.offer(String.format(Define.strBuy004,item.getName(),item.getProperties().get("value")));
-                QueueProvider.offer(String.format(Define.strBuy005,player.getGold()));
+                QueueProvider.offer(String.format(Define.strTradeBuy004,item.getName(),item.getProperties().get("value")));
+                QueueProvider.offer(String.format(Define.strTradeBuy005,player.getGold()));
             }
             else {
-                QueueProvider.offer(Define.strBuy006);
+                QueueProvider.offer(String.format(Define.strTradeBuy006,player.getName()));
             }
         } else {
-            QueueProvider.offer(Define.strBuy007);
+            QueueProvider.offer(Define.strTradeBuy007);
         }
     }
 
     public void playerSell() {
-        QueueProvider.offer(player.getName() + "'s items:\t" + npc.getName()  + "'s gold:" + npc.getGold() + "\n");
+        QueueProvider.offer(String.format(Define.strTradeCurrency,npc.getName(),npc.getGold(),player.getName()));
         QueueProvider.offer(player.getStorage().displayWithValue(player.getLuck(), player.getIntelligence()));
-        
-        QueueProvider.offer("You have " + player.getGold() + " gold coins.\nWhat do you want to sell?");
+
+        QueueProvider.offer(String.format(Define.strTradeCurrencySell,player.getName(),player.getGold()));
         String itemName = QueueProvider.take();
- 
+
         if ("exit".equals(itemName) || "back".equals(itemName)) {
             return;
         }
@@ -87,14 +87,14 @@ public class Trading {
         Item item = tradeItem(player, npc, itemName);
         if (item != null) {
             if (item != itemRepo.getItem("empty")) {
-                QueueProvider.offer("You have sold a " + item.getName() + " for " + (player.getGold() - goldBefore) + " gold coins.");
-                QueueProvider.offer("You now have " + player.getGold() + " gold coins remaining.");
+                QueueProvider.offer(String.format(Define.strTradeSelling,player.getName(),(player.getGold() - goldBefore),item.getName()));
+                QueueProvider.offer(String.format(Define.strTradeCurrency001,player.getName(),player.getGold()));
             }
             else {
-                QueueProvider.offer(npc.getName() + " does not have enough money!");
+                QueueProvider.offer(String.format(Define.strTradeBuy006,npc.getName()));
             }
         } else {
-            QueueProvider.offer("Either this item doesn't exist or this character does not own that item");
+            QueueProvider.offer(Define.strTradeBuy007);
         }
     }
 
@@ -116,7 +116,7 @@ public class Trading {
         if (itemIds.containsKey(itemName)) {
             int itemValue = itemValues.get(itemIds.get(itemName));
             Item item = itemIdtoItem.get(itemIds.get(itemName));
-            
+
             if(seller instanceof Player){
                 itemValue = (int)((0.5+0.02*(seller.getIntelligence()+seller.getLuck()))*itemValue);
             }

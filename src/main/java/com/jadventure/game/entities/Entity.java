@@ -20,24 +20,24 @@ public abstract class Entity {
     protected ItemRepository itemRepo = GameBeans.getItemRepository();
 
     // All entities can attack, have health, have names
-    private int healthMax;
-    private int health;
-    private String name;
-    private String intro;
-    private int level;
+    private int healthMax;//最大生命值
+    private int health;//当前生命值
+    private String name;//名字
+    private String intro;//游戏人物进场对话
+    private int level;//等级
     // Statistics
     private int strength;//力量
     private int intelligence;//智力
     private int dexterity;//敏捷
     private int luck;//幸运
     private int stealth;//精神
-    private int gold;
-    private double damage = 30;
+    private int gold;//金币
+    private double damage = 30;//默认伤害
     private double critChance = 0.0;//暴击几率
     private int armour;//盔甲
-    private String weapon = "hands";
-    private Map<EquipmentLocation, Item> equipment;
-    protected Storage storage;
+    private String weapon = "hands";//武器
+    private Map<EquipmentLocation, Item> equipment;//装备
+    protected Storage storage;//背包
 
     public Entity() {
     	this(100, 100, "default", 0, null, new HashMap<EquipmentLocation, Item>());
@@ -207,7 +207,8 @@ public abstract class Entity {
         }
         if (place == EquipmentLocation.BOTH_HANDS) {
             unequipTwoPlaces(EquipmentLocation.LEFT_HAND, EquipmentLocation.RIGHT_HAND);
-        } else if (place == EquipmentLocation.BOTH_ARMS) {
+        }
+        if (place == EquipmentLocation.BOTH_ARMS) {
             unequipTwoPlaces(EquipmentLocation.LEFT_ARM, EquipmentLocation.RIGHT_ARM);
         }
         Item bothHands = equipment.get(EquipmentLocation.BOTH_HANDS);
@@ -221,21 +222,22 @@ public abstract class Entity {
         equipment.put(place, item);
         removeItemFromStorage(item);
         Map<String, String> result = new HashMap<String, String>();
+        //zgnHelp 首字母划分物品功能
         switch (item.getId().charAt(0)) {
-            case 'w': {
+            case 'w': {//武器
                 this.weapon = item.getId();
                 this.damage += item.getProperty("damage");
                 double diffDamage = this.damage - oldDamage;
                 result.put("damage", String.valueOf(diffDamage));
                 break;
             }
-            case 'a': {
+            case 'a': {//盔甲
                 this.armour += item.getProperty("armour");
                 int diffArmour = this.armour - oldArmour;
                 result.put("armour", String.valueOf(diffArmour));
                 break;
             }
-            case 'p': {
+            case 'p': {//生命药水(生命最大值限制)
                 if (item.containsProperty("healthMax")) {
                     int healthOld = this.getHealth();
                     this.healthMax += item.getProperty("healthMax");
@@ -252,7 +254,7 @@ public abstract class Entity {
                 }
                 break;
             }
-            case 'f': {
+            case 'f': {//食物
                 int healthOld = this.getHealth();
                 this.health += item.getProperty("health");
                 this.health = (this.health > this.healthMax) ? this.healthMax
@@ -266,6 +268,11 @@ public abstract class Entity {
         return result;
     }
 
+    /**
+     * 卸下双武器
+     * @author  zgn
+     * @date    2022/8/26 0026
+    */
     private void unequipTwoPlaces(EquipmentLocation leftLocation, EquipmentLocation rightLocation) {
         Item left = equipment.get(leftLocation);
         Item right = equipment.get(rightLocation);
@@ -276,7 +283,13 @@ public abstract class Entity {
             unequipItem(right);
         }
     }
-
+    /**
+     * 卸下物品
+     * @author  zgn
+     * @date    2022/8/26 0026
+     * @param	item
+     * @return	java.util.Map<java.lang.String,java.lang.String>
+     */
     public Map<String, String> unequipItem(Item item) {
         for (EquipmentLocation key : equipment.keySet()) {
             if (item.equals(equipment.get(key))) {
@@ -303,8 +316,13 @@ public abstract class Entity {
         return result;
     }
 
+    /**
+     * 检查装备
+     * @author  zgn
+     * @date    2022/8/26 0026
+    */
     public void printEquipment() {
-        QueueProvider.offer("\n------------------------------------------------------------");
+        QueueProvider.offer(Define.strSysLine);
         QueueProvider.offer(Define.strItemsEquip002);
         if (equipment.keySet().size() == 0) {
             QueueProvider.offer(Define.strItemsEmpty);
@@ -312,16 +330,16 @@ public abstract class Entity {
             int i = 0;
             Item hands = itemRepo.getItem("hands");
             Map<EquipmentLocation, String> locations = new HashMap<>();
-            locations.put(EquipmentLocation.HEAD, "Head");
-            locations.put(EquipmentLocation.CHEST, "Chest");
-            locations.put(EquipmentLocation.LEFT_ARM, "Left arm");
-            locations.put(EquipmentLocation.LEFT_HAND, "Left hand");
-            locations.put(EquipmentLocation.RIGHT_ARM, "Right arm");
-            locations.put(EquipmentLocation.RIGHT_HAND, "Right hand");
-            locations.put(EquipmentLocation.BOTH_HANDS, "Both hands");
-            locations.put(EquipmentLocation.BOTH_ARMS, "Both arms");
-            locations.put(EquipmentLocation.LEGS, "Legs");
-            locations.put(EquipmentLocation.FEET, "Feet");
+            locations.put(EquipmentLocation.HEAD, Define.strEntityHead);
+            locations.put(EquipmentLocation.CHEST, Define.strEntityChest);
+            locations.put(EquipmentLocation.LEFT_ARM, Define.strEntityLeftArm);
+            locations.put(EquipmentLocation.LEFT_HAND, Define.strEntityLeftHand);
+            locations.put(EquipmentLocation.RIGHT_ARM, Define.strEntityRightArm);
+            locations.put(EquipmentLocation.RIGHT_HAND, Define.strEntityRightHand);
+            locations.put(EquipmentLocation.BOTH_HANDS, Define.strEntityBothHands);
+            locations.put(EquipmentLocation.BOTH_ARMS, Define.strEntityBothArms);
+            locations.put(EquipmentLocation.LEGS, Define.strEntityLegs);
+            locations.put(EquipmentLocation.FEET, Define.strEntityFeet);
             for (Map.Entry<EquipmentLocation, Item> item : equipment.entrySet()) {
                 if (item.getKey() != null && !hands.equals(item.getValue()) && item.getValue() != null) {
                     QueueProvider.offer(locations.get(item.getKey()) + " - " + item.getValue().getName());
@@ -333,7 +351,7 @@ public abstract class Entity {
                 QueueProvider.offer(Define.strItemsEmpty);
             }
         }
-        QueueProvider.offer("------------------------------------------------------------");
+        QueueProvider.offer(Define.strSysLine);
     }
 
     public Storage getStorage() {

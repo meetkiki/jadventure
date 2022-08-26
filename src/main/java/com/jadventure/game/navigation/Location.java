@@ -87,7 +87,7 @@ public class Location implements ILocation {
     }
 
     // It checks each direction for an exit and adds it to the exits hashmap if it exists.
-    //它检查出口的每个方向，并将其添加到出口哈希映射（如果存在）。
+    //它检查出口的每个方向,并将其添加到出口哈希映射（如果存在）。
     public Map<Direction, ILocation> getExits() {
         Map<Direction, ILocation> exits = new HashMap<Direction, ILocation>();
         ILocation borderingLocation;

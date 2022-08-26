@@ -28,6 +28,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ *  会话核心类
+ * @author  zgn
+ * @date    2022/8/26 0026
+*/
 public class ConversationManager {
     private static NpcRepository npcRepository = EncounteredNpcRepository.createRepo();
     private static ConversationManager instance = null;
@@ -52,8 +57,8 @@ public class ConversationManager {
     }
 
     public ConversationManager() {
-       load(); 
-    } 
+       load();
+    }
 
     public static ConversationManager getInstance() {
         if (instance == null) {
@@ -61,7 +66,11 @@ public class ConversationManager {
         }
         return instance;
     }
-
+    /**
+     * 加载人物对话
+     * @author  zgn
+     * @date    2022/8/26 0026
+     */
     private void load() {
         String fileName = Define.configPath+"npcs.json";
         JsonParser parser = new JsonParser();
@@ -83,6 +92,13 @@ public class ConversationManager {
         }
     }
 
+    /**
+     * 绑定人物和对话
+     * @author  zgn
+     * @date    2022/8/26 0026
+     * @param	npc 人物
+     * @param	conversation 对话
+     */
     private void addConversation(NPC npc, JsonArray conversation) {
         List<Line> start = new ArrayList<>();
         int i = 0;
@@ -93,6 +109,14 @@ public class ConversationManager {
         lines.put(npc, start);
     }
 
+    /**
+     *
+     * @author  zgn
+     * @date    2022/8/26 0026
+     * @param	index 序号
+     * @param	conversation 对话
+     * @return	com.jadventure.game.conversation.Line
+     */
     private Line getLine(int index, JsonArray conversation) {
         JsonObject line = conversation.get(index).getAsJsonObject();
         List<Integer> responses = new ArrayList<>();
@@ -101,15 +125,22 @@ public class ConversationManager {
                 responses.add(i.getAsInt());
             }
         }
-        String playerPrompt = line.get("player").getAsString();
-        String text = line.get("text").getAsString();
-        String[] con = line.get("condition").getAsString().split("=");
+        String playerPrompt = line.get("player").getAsString();//玩家说的话
+        String text = line.get("text").getAsString();//回复
+        String[] con = line.get("condition").getAsString().split("=");//交流情况角色限制
         ConditionType condition = CONDITION_TYPE_MAP.get(con[0]);
         String conditionParameter = (con.length == 1) ? "" : con[1];
         ActionType action = ACTION_TYPE_MAP.get(line.get("action").getAsString());
         return new Line(index, playerPrompt, text, condition, conditionParameter, responses, action);
     }
 
+    /**
+     * 开始对话
+     * @author  zgn
+     * @date    2022/8/26 0026
+     * @param	npc npc
+     * @param	player 玩家
+     */
     public void startConversation(NPC npc, Player player) throws DeathException {
         List<Line> conversation = null;
         //Workaround as <code>lines.get(npc)</code> is not working.
@@ -125,13 +156,15 @@ public class ConversationManager {
         if (conversation != null) {
             Line start = null;
             for (Line l : conversation) {
-                if ("".equals(l.getPlayerPrompt()) && 
+                //开场白
+                if ("".equals(l.getPlayerPrompt()) &&
                             ConversationManager.matchesConditions(npc, player, l)) {
                     start = l;
                     break;
                 }
             }
             if (start != null) {
+                //对话
                 QueueProvider.offer(start.getText());
                 Line response = start.display(npc, player, conversation);
                 triggerAction(start, npc, player);
@@ -145,6 +178,14 @@ public class ConversationManager {
         }
     }
 
+    /**
+     * 动作触发器
+     * @author  zgn
+     * @date    2022/8/26 0026
+     * @param	line 对话
+     * @param	npc
+     * @param	player 玩家
+     */
     private void triggerAction(Line line, NPC npc, Player player) throws DeathException {
         switch (line.getAction()) {
             case ATTACK:
@@ -155,9 +196,18 @@ public class ConversationManager {
                 Trading t = new Trading(npc, player);
                 t.trade(true, true);
                 break;
-        }     
+        }
     }
 
+    /**
+     * 依据对话(line)的类型,触发对话
+     * @author  zgn
+     * @date    2022/8/26 0026
+     * @param	npc
+     * @param	player
+     * @param	line
+     * @return	boolean
+     */
     public static boolean matchesConditions(NPC npc, Player player, Line line) {
         switch(line.getCondition()) {
             case ALLY:

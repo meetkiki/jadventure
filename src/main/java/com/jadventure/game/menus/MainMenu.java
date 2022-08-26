@@ -38,11 +38,6 @@ public class MainMenu extends Menus implements Runnable {
     }
 
     public void start() {
-        /*menuItems.add(new MenuItem("Start", "Starts a new Game", "new"));
-        menuItems.add(new MenuItem("Load", "Loads an existing Game"));
-        menuItems.add(new MenuItem("Delete", "Deletes an existing Game"));
-        menuItems.add(new MenuItem("Exit", null, "quit"));*/
-
         menuItems.add(new MenuItem(Define.commandStart, Define.strRecordStart, "new"));
         menuItems.add(new MenuItem(Define.commandLoad, Define.strRecordLoad));
         menuItems.add(new MenuItem(Define.commandDelete, Define.strRecordDelete));

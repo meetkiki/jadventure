@@ -12,6 +12,10 @@ import java.util.Map;
  * All menus in JAdventure extend this class
  * Add MenuItems to menuItems, call displayMenu and you're happy
  */
+/**
+ *JAdventure中的所有菜单都扩展了这个类
+ *将菜单项添加到菜单项中，调用displayMenu，您会很高兴
+ */
 public class Menus {
     protected List<MenuItem> menuItems = new ArrayList<>();
     protected Map<String, MenuItem> commandMap = new HashMap<String, MenuItem>();

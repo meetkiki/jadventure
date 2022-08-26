@@ -11,14 +11,14 @@ import java.util.List;
 
 public class Line {
     private int id;
-    private String playerPrompt;
-    private String text;
-    private ConditionType condition;
+    private String playerPrompt;//玩家说的话
+    private String text;//回复
+    private ConditionType condition;//交流情况角色限制
     private String conditionParameter;
-    private List<Integer> responses;
-    private ActionType action;
+    private List<Integer> responses;//回复Line序号
+    private ActionType action;//动作
 
-    public Line(int id, String playerPrompt, String text, ConditionType condition, 
+    public Line(int id, String playerPrompt, String text, ConditionType condition,
             String conditionParameter, List<Integer> responses, ActionType action) {
         this.id = id;
         this.playerPrompt = playerPrompt;
@@ -52,19 +52,29 @@ public class Line {
     public ActionType getAction() {
         return action;
     }
-
+    /**
+     *
+     * @author  zgn
+     * @date    2022/8/26 0026
+     * @param	npc
+     * @param	player
+     * @param	lines
+     * @return	com.jadventure.game.conversation.Line
+     */
     public Line display(NPC npc, Player player, List<Line> lines) {
         if (responses.size() == 0) {
             return null;
         }
         List<MenuItem> responseList = new ArrayList<>();
-        for (Integer responseNum : responses) { 
+        //加载对话,如果触发条件,载入界面对象
+        for (Integer responseNum : responses) {
             Line response = lines.get(responseNum);
             if (ConversationManager.matchesConditions(npc, player, response)) {
                 responseList.add(new MenuItem(response.getPlayerPrompt(), null));
             }
         }
         Menus responseMenu = new Menus();
+        //进入界面对象,返回符合指令的对话
         MenuItem response = responseMenu.displayMenu(responseList);
         for (int responseNum : responses) {
             Line possibleResponse = lines.get(responseNum);

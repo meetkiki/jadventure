@@ -12,22 +12,24 @@ import com.jadventure.game.constant.Define;
 public class Storage {
     public final static double WEIGHT_UNLIMITED = -1;
     private double maxWeight;
-	private List<ItemStack> itemStacks = null;
+    private List<ItemStack> itemStacks = null;
 
     public Storage() {
         this(WEIGHT_UNLIMITED);
     }
-	public Storage(double maxWeight) {
+
+    public Storage(double maxWeight) {
         this(maxWeight, new ArrayList<ItemStack>());
-	}
+    }
+
     public Storage(double maxWeight, List<ItemStack> items) {
         this.maxWeight = maxWeight;
         this.itemStacks = items;
     }
 
-	public double getMaxWeight() {
-		return maxWeight;
-	}
+    public double getMaxWeight() {
+        return maxWeight;
+    }
 
     /**
      * Checks if the current Storage contains an ItemStack with the
@@ -75,7 +77,7 @@ public class Storage {
             if (contains(itemStack)) {
                 ItemStack sameType = this.getSameType(itemStack);
                 this.itemStacks.remove(sameType);
-                this.itemStacks.add(new ItemStack(sameType.getAmount()+1, sameType.getItem()));
+                this.itemStacks.add(new ItemStack(sameType.getAmount() + 1, sameType.getItem()));
             } else {
                 this.itemStacks.add(itemStack);
             }
@@ -93,6 +95,7 @@ public class Storage {
     public Item removeItem(ItemStack item) {
         return removeItem(item, 1);
     }
+
     public Item remove(Item item) {
         return removeItem(new ItemStack(0, item), 1);
     }
@@ -119,10 +122,10 @@ public class Storage {
      * Prints out the content of the backpack to the console.
      */
     public void display() {
-            QueueProvider.offer("\n--------------------------------------------------------------------");
-            QueueProvider.offer(Define.strBackpack);
-            QueueProvider.offer(this.toString());
-            QueueProvider.offer("--------------------------------------------------------------------");
+        QueueProvider.offer(Define.strSysLine);
+        QueueProvider.offer(Define.strBackpack);
+        QueueProvider.offer(this.toString());
+        QueueProvider.offer(Define.strSysLine);
     }
 
     public boolean isEmpty() {
@@ -158,9 +161,11 @@ public class Storage {
             return content;
         }
     }
+
     public List<ItemStack> getItemStack() {
         return itemStacks;
     }
+
     public Integer calculateWeight() {
         int weight = 0;
         for (ItemStack itemStask : itemStacks) {
@@ -174,15 +179,15 @@ public class Storage {
             return Define.strItemsEmpty;
         } else {
             String content = "";
-            if(playerLuck > 0){
+            if (playerLuck > 0) {
                 for (ItemStack itemStack : itemStacks) {
-                    int value = (int)((0.5+0.02*(playerInt+playerLuck))*(itemStack.getItem().getProperties().get("value")));
-                    content += "- " + itemStack.getItem().getName() + " : " + itemStack.getAmount() + " at " + value + " gold coins each\n";
+                    int value = (int) ((0.5 + 0.02 * (playerInt + playerLuck)) * (itemStack.getItem().getProperties().get("value")));
+                    content += String.format(Define.strTradeBuy008, itemStack.getItem().getName(), itemStack.getAmount(), value);
                 }
             } else {
                 for (ItemStack itemStack : itemStacks) {
                     int value = itemStack.getItem().getProperties().get("value");
-                    content += "- " + itemStack.getItem().getName() + " : " + itemStack.getAmount() + " at " + value + " gold coins each\n";
+                    content += String.format(Define.strTradeBuy008, itemStack.getItem().getName(), itemStack.getAmount(), value);
                 }
             }
             return content;

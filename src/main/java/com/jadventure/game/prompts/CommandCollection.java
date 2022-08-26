@@ -304,6 +304,12 @@ public enum CommandCollection {
         new BackpackDebugPrompt(player);
     }
 
+    /**
+     * 和名字是arg的NPC对话
+     * @author  zgn
+     * @date    2022/8/26 0026
+     * @param	arg NPC名字
+     */
     @Command(command="talk", aliases={"t", "speakto"}, description="Talks to a character.", debug=false)
     public void command_talk(String arg) throws DeathException {
         ConversationManager cm = new ConversationManager();
