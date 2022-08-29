@@ -15,6 +15,11 @@ import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * 战斗系统
+ * @auther zgn
+ * @date  2022/8/29
+ **/
 public class BattleMenu extends Menus {
 
     private NPC opponent;
@@ -22,7 +27,7 @@ public class BattleMenu extends Menus {
     private Random random;
     private int armour;
     private double damage;
-    private int escapeSuccessfulAttempts = 0;
+    private int escapeSuccessfulAttempts = 0;//逃跑成功次数,成功一次+1,失败-1
 
     public BattleMenu(NPC opponent, Player player) throws DeathException {
         this.random = new Random();
@@ -31,6 +36,7 @@ public class BattleMenu extends Menus {
         this.armour = player.getArmour();
         this.damage = player.getDamage();
         buildMenu();
+        //战斗流程
         while (opponent.getHealth() > 0 &&
                 player.getHealth() > 0 &&
                 (escapeSuccessfulAttempts <= 0)) {
@@ -38,7 +44,7 @@ public class BattleMenu extends Menus {
             MenuItem selectedItem = displayMenu(this.menuItems);
             testSelected(selectedItem);
         }
-        if (player.getHealth() == 0) {
+        if (player.getHealth() == 0) {//死亡
             QueueProvider.offer(Define.strRoleDied);
             String reply = QueueProvider.take().toLowerCase();
             while (!reply.startsWith(Define.strSysYes) && !reply.startsWith(Define.strSysNo)) {
@@ -50,7 +56,7 @@ public class BattleMenu extends Menus {
             } else if (reply.startsWith(Define.strSysNo)) {
                 throw new DeathException("close");
             }
-        }  else if (opponent.getHealth() == 0) {
+        }  else if (opponent.getHealth() == 0) {//获胜
             int xp = opponent.getXPGain();
             this.player.setXP(this.player.getXP() + xp);
             int oldLevel = this.player.getLevel();
@@ -84,6 +90,11 @@ public class BattleMenu extends Menus {
         }
     }
 
+    /**
+     * 初始化战斗指令
+     * @auther zgn
+     * @date  2022/8/29
+     **/
     private void buildMenu() {
         this.menuItems.add(new MenuItem(Define.commandAttack,
                 String.format(Define.strBattle, opponent.getName())));
@@ -99,6 +110,7 @@ public class BattleMenu extends Menus {
 
     private void testSelected(MenuItem m) {
         if(m.getKey().equals(Define.commandAttack)){
+            //进攻伤害完整,护甲削弱
             mutateStats(1, 0.5);
             attack(player, opponent);
             attack(opponent, player);
@@ -111,6 +123,7 @@ public class BattleMenu extends Menus {
             attack(opponent, player);
             resetStats();
         }
+        //逃跑
         if(m.getKey().equals(Define.commandEscape)){
             escapeSuccessfulAttempts = escapeAttempt(player,
                     opponent, escapeSuccessfulAttempts);
@@ -131,32 +144,44 @@ public class BattleMenu extends Menus {
         if (escapeAttempts == -10) {
             escapeAttempts = 0;
         }
+        //逃跑等级= 智力+精神+敏捷
         double playerEscapeLevel = player.getIntelligence() +
             player.getStealth() + player.getDexterity();
-        double attackerEscapeLevel = attacker.getIntelligence() +
-            attacker.getStealth() + attacker.getDexterity() +
+        //进攻等级=逃跑等级+(进攻方伤害/逃跑等级)
+        double attackerEscapeLevel = playerEscapeLevel +
             (attacker.getDamage() / playerEscapeLevel);
+        //逃跑系数=逃跑等级/进攻等级
+        //假设伤害系数为a a^2/(a^2+伤害)
         double escapeLevel = playerEscapeLevel / attackerEscapeLevel;
 
         Random rand = new Random();
+        //zgnTodo 逃跑和幸运也有关系,有误的计算方式
         int rawLuck = rand.nextInt(player.getLuck()*2) + 1;
         int lowerBound = 60 - rawLuck;
         int upperBound = 80 - rawLuck;
         double minEscapeLevel = (rand.nextInt((upperBound - lowerBound) + 1) +
-                lowerBound) / 100.0;
+                lowerBound) / 100.0;//最小逃跑系数[0.22-0.3]
+        //逃跑系数达标且未曾逃跑过,可以逃跑
         if (escapeLevel > minEscapeLevel && (escapeAttempts == 0)) {
             QueueProvider.offer(String.format(Define.strRoleEscape,attacker.getName()));
             return 1;
-        } else if (escapeAttempts < 0) {
+        } else if (escapeAttempts < 0) {//不能在逃了
             QueueProvider.offer(Define.strRoleEscape001);
             return escapeAttempts - 1;
-        } else {
+        } else {//逃跑失败
             QueueProvider.offer(String.format(Define.strRoleEscape002,attacker.getName()));
             return escapeAttempts-1;
         }
     }
-
+    /**
+     * zgnTodo 伤害计算
+     * @auther zgn
+     * @date  2022/8/29
+     * @param attacker 进攻方
+     * @param defender 防守方
+     **/
     private void attack(Entity attacker, Entity defender) {
+
         if (attacker.getHealth() == 0) {
             return;
         }
@@ -182,6 +207,14 @@ public class BattleMenu extends Menus {
         }*/
     }
 
+    /**
+     * 百分比调整攻击和护甲值
+     * @auther zgn
+     * @date  2022/8/29
+     * @param damageMult
+     * @param armourMult
+     *
+     **/
     private void mutateStats(double damageMult, double armourMult) {
         armour = player.getArmour();
         damage = player.getDamage();

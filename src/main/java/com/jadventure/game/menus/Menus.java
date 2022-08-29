@@ -20,6 +20,13 @@ public class Menus {
     protected List<MenuItem> menuItems = new ArrayList<>();
     protected Map<String, MenuItem> commandMap = new HashMap<String, MenuItem>();
 
+    /**
+     * 将(序号/菜单指令/小写的终级指令)转化为并添加指令
+     * @auther zgn
+     * @date  2022/8/29
+     * @param m
+     * @return com.jadventure.game.menus.MenuItem
+     **/
     public MenuItem displayMenu(List<MenuItem> m) {
         int i = 1;
         for (MenuItem menuItem: m) {
@@ -37,7 +44,7 @@ public class Menus {
     // calls for user input from command line
     protected MenuItem selectMenu(List<MenuItem> m) {
         this.printMenuItems(m);
-        String command = QueueProvider.take();
+        String command = QueueProvider.take();//获取输入
         if (commandMap.containsKey(command.toLowerCase())) {
             return commandMap.get(command.toLowerCase());
         } else {
@@ -45,7 +52,12 @@ public class Menus {
             return this.displayMenu(m);
         }
     }
-
+    /**
+     * 按序号输出指令和菜单描述
+     * @auther zgn
+     * @date  2022/8/29
+     * @param m
+     **/
     private void printMenuItems(List<MenuItem> m) {
         int i = 1;
         for (MenuItem menuItem: m) {

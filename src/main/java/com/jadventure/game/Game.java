@@ -66,8 +66,12 @@ public class Game {
     /**
      * This is the main loop for the player-game interaction. It gets input from the
      * command line and checks if it is a recognised command.
-     *
      * This keeps looping as long as the player didn't type an exit command.
+     */
+    /**
+     *这是玩家游戏交互的主循环。它从
+     *命令行，并检查它是否是可识别的命令。
+     *只要游戏者没有输入退出命令，它就会继续循环。
      */
     public void gamePrompt(Player player) throws DeathException {
         boolean continuePrompt = true;

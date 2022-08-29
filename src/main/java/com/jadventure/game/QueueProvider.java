@@ -17,6 +17,11 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 系统队列
+ * @auther zgn
+ * @date  2022/8/29
+ **/
 public class QueueProvider {
     private static Logger logger = LoggerFactory.getLogger(QueueProvider.class);
     public static BlockingQueue<String> queue = new LinkedBlockingQueue<>();
@@ -110,6 +115,11 @@ public class QueueProvider {
         return input;
     }
 
+    /**
+     * 获取输入的方式
+     * @auther zgn
+     * @date  2022/8/29
+     **/
     public static String take() {
         String message = null;
         if (GameModeType.SERVER == mode) {

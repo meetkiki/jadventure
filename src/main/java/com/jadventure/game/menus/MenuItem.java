@@ -8,9 +8,9 @@ import java.util.Set;
  * @see Menus
  */
 public class MenuItem {
-    protected String command;
-    protected String description;
-    protected Set<String> altCommands;
+    protected String command;//指令
+    protected String description;//描述
+    protected Set<String> altCommands;//终极指令
 
     public MenuItem(String command, String description) {
         this.command = command;

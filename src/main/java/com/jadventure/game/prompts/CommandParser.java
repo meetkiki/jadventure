@@ -117,6 +117,11 @@ public class CommandParser {
         return true;
     }
 
+    /**
+     * 去除自然语法,eg 一只(a),到(to)
+     * @auther zgn
+     * @date  2022/8/29
+     **/
     private String removeNaturalText(String command) {
         command = command.replaceAll(" to ", " ");
         command = command.replaceAll(" a ", " ");

@@ -26,7 +26,13 @@ public class ChooseClassMenu extends Menus {
             }
         }
     }
-
+    /**
+     * 依据菜单做出执行判断
+     * @auther zgn
+     * @date  2022/8/29
+     * @param m 菜单
+     * @return boolean
+     **/
     private static boolean testOption(MenuItem m) throws DeathException {
         String key = m.getKey();
         if(key.equals(Define.commandRecruit)) {

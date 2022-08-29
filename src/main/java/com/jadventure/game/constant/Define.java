@@ -35,7 +35,7 @@ public class Define {
     public static String strBattle001="造成[%s]伤害.";//22 damage dealt!
     public static String strBattle002="[%s]的血量是:%s.";//The Goblin's health is 39
     public static String strBattle003="致命一击!伤害加倍!";//The Goblin's health is 39
-    public static String strBattle004="怪物包围了你:";//Monsters around you:
+    public static String strBattle004="你附近的怪物:";//Monsters around you:
     public static String strBattle005="附近没有怪物了";//There are no monsters around you'n
     public static String strBattleing="一只[%s]正在攻击你!";//A %s is attacking you!
 

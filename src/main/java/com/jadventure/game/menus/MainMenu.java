@@ -56,7 +56,13 @@ public class MainMenu extends Menus implements Runnable {
         } while(continuing);
         QueueProvider.offer(Define.strSysExit);
     }
-
+    /**
+     * 依据菜单执行指令
+     * @auther zgn
+     * @date  2022/8/29
+     * @param m 菜单
+     * @return boolean
+     **/
     private static boolean testOption(MenuItem m) throws DeathException {
         String key = m.getKey();
         if(key.equals(Define.commandStart)){
@@ -75,6 +81,11 @@ public class MainMenu extends Menus implements Runnable {
         return true;
     }
 
+    /**
+     * 加载不到角色信息不停重复
+     * @auther zgn
+     * @date  2022/8/29
+     **/
     private static void loadProfileFromMenu() throws DeathException {
         String key;
         if (isProfileDirEmpty()) {

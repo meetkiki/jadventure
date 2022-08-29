@@ -34,7 +34,7 @@ public abstract class Entity {
     private int gold;//金币
     private double damage = 30;//默认伤害
     private double critChance = 0.0;//暴击几率
-    private int armour;//盔甲
+    private int armour;//护甲
     private String weapon = "hands";//武器
     private Map<EquipmentLocation, Item> equipment;//装备
     protected Storage storage;//背包

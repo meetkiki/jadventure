@@ -225,6 +225,7 @@ public class Player extends Entity {
                 player.addItemToStorage(itemRepo.getItem(item.getAsString()));
             }
             Random rand = new Random();
+            //zgnHelp 初始化幸运值<4
             int luck = rand.nextInt(3) + 1;
             player.setLuck(luck);
             player.setStealth(json.get("stealth").getAsInt());

@@ -17,7 +17,11 @@ import org.slf4j.LoggerFactory;
  */
 public class JAdventure {
     private static Logger logger = LoggerFactory.getLogger(JAdventure.class);
-
+    /**
+     * 选择游戏模式,开启客户服务端
+     * @auther zgn
+     * @date  2022/8/29
+     **/
     public static void main(String[] args) {
         logger.info("Starting JAdventure " + toString(args));
         GameModeType mode = getGameMode(args);
@@ -57,7 +61,13 @@ public class JAdventure {
             new MainMenu();
         }
     }
-
+    /**
+     * 选择游戏模式
+     * @auther zgn
+     * @date  2022/8/29
+     * @param args 游戏模式
+     * @return com.jadventure.game.GameModeType
+     **/
     private static GameModeType getGameMode(String[] args) {
         if (args == null || args.length == 0 || "".equals(args[0].trim())) {
             return GameModeType.STAND_ALONE;

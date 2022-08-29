@@ -10,7 +10,13 @@ import java.util.Random;
  */
 public class MonsterFactory {
     Random random = new Random();
- 
+
+    /**
+     * 随即系数小于危险系数才会,依据环境类型生成怪物,怪物会依据玩家等级进行属性提升
+     * @auther zgn
+     * @date  2022/8/29
+     * @param player
+     **/
     public Monster generateMonster(Player player) {
         int randomInt = random.nextInt(5) + 1;
         if (randomInt <= player.getLocation().getDangerRating()) {

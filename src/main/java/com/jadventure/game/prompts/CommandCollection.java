@@ -116,7 +116,7 @@ public enum CommandCollection {
         player.save();
     }
 
-    @Command(command="monster", aliases={"m", "enemy"}, description="怪物包围了你", debug=false)
+    @Command(command="monster", aliases={"m", "enemy"}, description="查看周围的怪物", debug=false)
     public void command_m() {
         List<Monster> monsterList = player.getLocation().getMonsters();
         if (monsterList.size() > 0) {
@@ -150,18 +150,21 @@ public enum CommandCollection {
                     Random random = new Random();
                     if (player.getLocation().getMonsters().size() == 0) {
                         MonsterFactory monsterFactory = new MonsterFactory();
+                        //随机生成[危险系数+1] ~ 0 之间的怪物
                         int upperBound = random.nextInt(player.getLocation().getDangerRating() + 1);
                         for (int i = 0; i < upperBound; i++) {
                             Monster monster = monsterFactory.generateMonster(player);
                             player.getLocation().addMonster(monster);
                         }
                     }
+                    //zgnHelp 有59的掉落物品几率
                     if (player.getLocation().getItems().size() == 0) {
                         int chance = random.nextInt(100);
                         if (chance < 60) {
                             addItemToLocation();
                         }
                     }
+                    //zgnHelp 低于0.5的怪物主动攻击几率
                     if (random.nextDouble() < 0.5) {
                         List<Monster> monsters = player.getLocation().getMonsters();
                         if (monsters.size() > 0) {

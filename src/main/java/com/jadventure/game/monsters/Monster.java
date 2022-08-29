@@ -41,7 +41,7 @@ public abstract class Monster extends NPC {
                 if (i == numItems) {
                     break;
                 }
-
+                //zgnHelp 怪物1/6的掉落率
                 int j = rand.nextInt(5) + 1;
                 if (j == 1) {
                     Item item = itemRepo.getItem(itemName);
