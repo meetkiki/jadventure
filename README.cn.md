@@ -38,7 +38,7 @@ JAdventure是基于Java（文本）的
 欢迎大家帮助创建JAdventure!
 
 了解更多关于游戏和其中的想法的最佳方法是
-来看看[Reddit - JAdventure](https://www.reddit.com/search?q=jadventure).
+来看看[Reddit - JAdventure](https://www.reddit.com/search?q=jadventure). (已经找不到什么有用的信息了)
 
 或者访问我们的[IRC channel reddit-progether](http://webchat.freenode.net/?channels=reddit-progether&uio=d4)
 

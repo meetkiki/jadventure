@@ -103,7 +103,7 @@ public class ConversationManager {
         List<Line> start = new ArrayList<>();
         int i = 0;
         for (JsonElement entry : conversation) {
-            JsonObject details = entry.getAsJsonObject();
+            //JsonObject details = entry.getAsJsonObject();
             start.add(getLine(i++, conversation));
         }
         lines.put(npc, start);
