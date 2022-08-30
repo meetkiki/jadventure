@@ -4,8 +4,8 @@
 地图信息
 -------------
 
-![地面](https://gitee.com/zgn_13200126222/jadventure/raw/master/doc/%E6%B8%B8%E6%88%8F%E5%9C%B0%E5%9B%BE%E6%95%B0%E6%8D%AE/%E5%9C%B0%E9%9D%A2%E5%9C%B0%E5%9B%BE.png "地面")
-![地下](https://gitee.com/zgn_13200126222/jadventure/raw/master/doc/%E6%B8%B8%E6%88%8F%E5%9C%B0%E5%9B%BE%E6%95%B0%E6%8D%AE/%E5%9C%B0%E4%B8%8B%E5%9C%B0%E5%9B%BE.png "地下")
+![地面](https://gitee.com/zgn_13200126222/jadventure/raw/master/doc/%E6%B8%B8%E6%88%8F%E5%9C%B0%E5%9B%BE%E6%95%B0%E6%8D%AE/%E5%9C%B0%E4%B8%8A%E5%9C%B0%E5%9B%BE_2D.png "地面")
+![地下](https://gitee.com/zgn_13200126222/jadventure/raw/master/doc/%E6%B8%B8%E6%88%8F%E5%9C%B0%E5%9B%BE%E6%95%B0%E6%8D%AE/%E5%9C%B0%E4%B8%8B%E5%9C%B0%E5%9B%BE_2D.png "地下")
 
 
 
