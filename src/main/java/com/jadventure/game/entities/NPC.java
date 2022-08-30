@@ -20,12 +20,12 @@ public class NPC extends Entity {
     private String id;
     private List<String> allies;
     private List<String> enemies;
-    
+
     public NPC() {
         allies = new ArrayList<>();
         enemies = new ArrayList<>();
     }
-    
+
     public NPC(String entityID) {
         allies = new ArrayList<>();
         enemies = new ArrayList<>();
@@ -75,15 +75,15 @@ public class NPC extends Entity {
     public List<String> getEnemies() {
         return enemies;
     }
-    
+
     public void setAllies( List<String> allies ) {
         this.allies = allies;
     }
-    
+
     public void setEnemies( List<String> enemies ) {
         this.enemies = enemies;
     }
-    
+
     public int getXPGain() {
         return xpGain;
     }
@@ -95,9 +95,9 @@ public class NPC extends Entity {
     public String getId() {
         return id;
     }
-    
 
-    @Override
+
+    /*@Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -107,7 +107,7 @@ public class NPC extends Entity {
             return npc.getId().equals(id);
         }
         return false;
-    }
-    
-    
+    }*/
+
+
 }

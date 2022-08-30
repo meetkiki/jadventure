@@ -7,8 +7,8 @@
 
 ##建议
 
-* 将LocationRepository重命名为WorldRepositoy，因为它包含游戏世界。
+* 将LocationRepository重命名为WorldRepositoy，因为它包含游戏世界.
 * 添加对多个游戏的支持
-    这应该相对容易，因为游戏已经存储在磁盘上（json格式）。
-    具体的解决方案可以是将每个游戏存储在单独的文件“world xxx.json”中。
-    或者每个游戏都在它自己的目录中，比如game data/${world name}/world。json；项目。json；等
+    这应该相对容易，因为游戏已经存储在磁盘上（json格式）.
+    具体的解决方案可以是将每个游戏存储在单独的文件“world xxx.json”中.
+    或者每个游戏都在它自己的目录中，比如game data/${world name}/world.json；项目.json；等

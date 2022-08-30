@@ -449,14 +449,14 @@
 		"items": ["wshi1"],
 		"locationType": "CAVE",
 		"title": "第一个位置",
-		"description": "你在一个巨大的空房间里。",
+		"description": "你在一个巨大的空房间里.",
 		"coordinate": "0,0,-1"},
 	"1,0,-1":{
 		"danger": 0,
 		"items": ["katana"],
 		"locationType": "CAVE",
 		"title": "暗室",
-		"description": "你看到一堆骨头。那里可能有一些装备。",
+		"description": "你看到一堆骨头.那里可能有一些装备.",
 		"coordinate": "1,0,-1"},
 	"0,5,-1": {
 		"danger": 3,

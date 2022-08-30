@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 /*
- * This class just holds a type of monster that is 
+ * This class just holds a type of monster that is
  * further outlined in its respective file. For now it
  * just holds the monster's name.
  */
@@ -18,17 +18,18 @@ public abstract class Monster extends NPC {
     public String monsterType;
     private ItemRepository itemRepo = GameBeans.getItemRepository();
 
-    @Override
+    /*@Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
         }
         if (obj instanceof Monster) {
             Monster m = (Monster) obj;
-            return m.monsterType.equals(this.monsterType);
+            return m.equals(this);
+            //return m.monsterType.equals(this.monsterType);
         }
         return false;
-    }
+    }*/
 
     public void addRandomItems(int playerLevel, String... children) {
         List<String> itemList = Arrays.asList(children);

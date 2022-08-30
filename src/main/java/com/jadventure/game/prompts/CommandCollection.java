@@ -270,7 +270,7 @@ public enum CommandCollection {
         }
     }
 
-    @Command(command="armour", aliases={""}, description="调整玩家的盔甲数量", debug=true)
+    @Command(command="armour", aliases={""}, description="调整玩家的护甲值", debug=true)
     public void command_armour(String arg) {
         int armour = Integer.parseInt(arg);
         player.setArmour(armour);

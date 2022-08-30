@@ -39,7 +39,7 @@ public class Define {
     public static String strBattle005="附近没有怪物了";//There are no monsters around you'n
     public static String strBattleing="一只[%s]正在攻击你!";//A %s is attacking you!
 
-    public static String strDataSave="您的游戏数据已保存。";//\nYour game data was saved
+    public static String strDataSave="您的游戏数据已保存.";//\nYour game data was saved
 
     public static String strFoeDrop="掉落了一个[%s].";//Your opponent dropped a// .
     public static String strFoeNull="未发现敌人.";//Opponent not found
@@ -61,7 +61,8 @@ public class Define {
                                         "要求等级: %s.";//Item doesn't exist within your view
     public static String strItemsViewNull="未发现物品.";//Item doesn't exist within your view
 
-    public static String strLocationsSave="游戏位置已保存。";//The game locations were saved.
+    public static String strLocationsSave="游戏位置已保存.";//The game locations were saved.
+    public static String strLocationsView="%s{%s}:\n    %s";//The game locations were saved.
 
     public static String strNPCs="NPCs:";//NPCs:
     public static String strNPCsTalkError="不能与[%s]对话.";//Unable to talk to " + arg
@@ -143,7 +144,7 @@ public class Define {
             "当前武器: %s\n" +
             "金币: %s\n" +
             "当前生命值/最大值: %s/%s\n" +
-            "伤害/盔甲数: %s/%s\n" +
+            "伤害/护甲: %s/%s\n" +
             "力量: %s\n" +
             "智力: %s\n" +
             "敏捷: %s\n" +

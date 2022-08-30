@@ -17,7 +17,7 @@ public class LocationTest {
             "looks difficult to go through.";
 		LocationType locationType = LocationType.FOREST;
 		Location location = new Location(coordinate, title, description, locationType);
-		
+
 		assertEquals(coordinate, location.getCoordinate());
 		assertEquals(title, location.getTitle());
 		assertEquals(description, location.getDescription());
@@ -27,12 +27,12 @@ public class LocationTest {
 	@Test
 	public void placeItem() {
 		Location cave = createLocation();
-		
+
 		Item bottle = new Item("bottle", "tool", "bottle",  "old bottle", 1, null);
 		cave.addItem(bottle);
-		
+
 		Item found = cave.removeItem(bottle);
-		
+
 		assertEquals(bottle.getId(), found.getId());
 	}
 
@@ -49,8 +49,10 @@ public class LocationTest {
         Location location = createLocation();
         NPC npc = new NPC("test");
         location.addNpc(npc);
+		System.out.println(location.getNpcs().size());
         assertEquals(1, location.getNpcs().size());
         location.remove(npc);
+		System.out.println(location.getNpcs().size());
         assertEquals(0, location.getNpcs().size());
 	}
 }

@@ -50,10 +50,10 @@ import com.jadventure.game.repository.LocationRepository;
  * with variables not unique to the player, place it in the entity class.
  */
 /**
- *这个类处理玩家及其所有属性。
+ *这个类处理玩家及其所有属性.
  *任何更改角色或与角色交互的方法都应该
- *放在这个类中。如果方法一般处理实体,或
- *对于不是玩家唯一的变量,将其放在实体类中。
+ *放在这个类中.如果方法一般处理实体,或
+ *对于不是玩家唯一的变量,将其放在实体类中.
  */
 public class Player extends Entity {
     // @Resource
@@ -126,6 +126,7 @@ public class Player extends Entity {
             player.setHealth(json.get("health").getAsInt());
             player.setArmour(json.get("armour").getAsInt());
             player.setDamage(json.get("damage").getAsInt());
+            player.setGold(json.get("gold").getAsInt());
             player.setLevel(json.get("level").getAsInt());
             player.setXP(json.get("xp").getAsInt());
             player.setStrength(json.get("strength").getAsInt());
@@ -185,7 +186,7 @@ public class Player extends Entity {
     }
 
     // This is known as the singleton pattern. It allows for only 1 instance of a player.
-    //这被称为单例模式。它只允许玩家的一个实例。
+    //这被称为单例模式.它只允许玩家的一个实例.
     private static Player player;
 
     /**
@@ -298,9 +299,11 @@ public class Player extends Entity {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("name", getName());
         jsonObject.addProperty("healthMax", getHealthMax());
+        //zgnTodo 保存会满血
         jsonObject.addProperty("health", getHealthMax());
         jsonObject.addProperty("armour", getArmour());
         jsonObject.addProperty("damage", getDamage());
+        jsonObject.addProperty("gold", getGold());
         jsonObject.addProperty("level", getLevel());
         jsonObject.addProperty("xp", getXP());
         jsonObject.addProperty("strength", getStrength());

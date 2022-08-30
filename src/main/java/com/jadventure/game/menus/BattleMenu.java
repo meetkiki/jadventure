@@ -60,7 +60,9 @@ public class BattleMenu extends Menus {
             int xp = opponent.getXPGain();
             this.player.setXP(this.player.getXP() + xp);
             int oldLevel = this.player.getLevel();
-            int newLevel = (int) (0.075 * Math.sqrt(this.player.getXP()) + 1);
+            //zgnHelp 经验等级计算公式
+            double v = 0.075 * Math.sqrt(this.player.getXP());
+            int newLevel = (int) (v + 1);
             this.player.setLevel(newLevel);
 
             // Iterates over the opponent's items and if there are any, drops them.
@@ -78,7 +80,7 @@ public class BattleMenu extends Menus {
                 this.player.getLocation().addItem(item);
                 QueueProvider.offer(String.format(Define.strFoeDrop,item.getName()));
             }
-
+            //杀死怪物后移除他
             this.player.getLocation().remove(opponent);
             this.player.setGold(this.player.getGold() + opponent.getGold());
             QueueProvider.offer(String.format(Define.strRoleWin,opponent.getName(),xp,opponent.getGold()));
@@ -115,6 +117,7 @@ public class BattleMenu extends Menus {
             attack(player, opponent);
             attack(opponent, player);
             resetStats();
+            return;
         }
         if(m.getKey().equals(Define.commandDefend)){
             mutateStats(0.5, 1);
@@ -122,20 +125,25 @@ public class BattleMenu extends Menus {
             attack(player, opponent);
             attack(opponent, player);
             resetStats();
+            return;
         }
         //逃跑
         if(m.getKey().equals(Define.commandEscape)){
             escapeSuccessfulAttempts = escapeAttempt(player,
                     opponent, escapeSuccessfulAttempts);
+            return;
         }
         if(m.getKey().equals(Define.commandEquip)){
             equip();
+            return;
         }
         if(m.getKey().equals(Define.commandUnEquip)){
             unequip();
+            return;
         }
         if(m.getKey().equals(Define.commandView)){
             viewStats();
+            return;
         }
     }
 
@@ -174,7 +182,7 @@ public class BattleMenu extends Menus {
         }
     }
     /**
-     * zgnTodo 伤害计算
+     * 伤害计算
      * @auther zgn
      * @date  2022/8/29
      * @param attacker 进攻方
@@ -191,20 +199,22 @@ public class BattleMenu extends Menus {
             damage += damage;
             QueueProvider.offer(Define.strBattle003);
         }
-        int healthReduction = (int) ((((3 * attacker.getLevel() / 50 + 2) *
-                damage * damage / (defender.getArmour() + 1)/ 100) + 2) *
-                (random.nextDouble() + 1));
+        //拆分解析
+        /*int healthReduction = (int) ((((3 * attacker.getLevel() / 50 + 2) *
+                damage * damage / (defender.getArmour() + 1) / 100) + 2) *
+                (random.nextDouble() + 1));*/
+        double v1 = random.nextDouble();
+        int i = 3 * attacker.getLevel() / 50 + 2;
+        double v = i * damage * damage / (defender.getArmour() + 1) / 100;
+        int healthReduction = (int) (
+                (v+ 2)*( v1+ 1)
+                );
         defender.setHealth((defender.getHealth() - healthReduction));
         if (defender.getHealth() < 0) {
             defender.setHealth(0);
         }
         QueueProvider.offer(String.format(Define.strBattle001,healthReduction));
         QueueProvider.offer(String.format(Define.strBattle002,defender.getName(),defender.getHealth()));
-        /*if (attacker instanceof Player) {
-            QueueProvider.offer(String.format(Define.strBattle002,defender.getName(),defender.getHealth()));
-        } else {
-            QueueProvider.offer(String.format(Define.strBattle002,defender.getName(),defender.getHealth()));
-        }*/
     }
 
     /**

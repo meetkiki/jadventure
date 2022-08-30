@@ -47,9 +47,9 @@ public class Game {
 
 
     /**
-     *开始新游戏。
+     *开始新游戏.
      *它首先打印介绍文本,并询问玩家的姓名
-     *性格并欢迎他/她。之后,它进入正常的游戏提示。
+     *性格并欢迎他/她.之后,它进入正常的游戏提示.
      */
     public void newGameStart(Player player) throws DeathException {
         QueueProvider.offer(player.getIntro());
@@ -69,9 +69,9 @@ public class Game {
      * This keeps looping as long as the player didn't type an exit command.
      */
     /**
-     *这是玩家游戏交互的主循环。它从
-     *命令行，并检查它是否是可识别的命令。
-     *只要游戏者没有输入退出命令，它就会继续循环。
+     *这是玩家游戏交互的主循环.它从
+     *命令行，并检查它是否是可识别的命令.
+     *只要游戏者没有输入退出命令，它就会继续循环.
      */
     public void gamePrompt(Player player) throws DeathException {
         boolean continuePrompt = true;

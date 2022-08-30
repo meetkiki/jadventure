@@ -39,6 +39,7 @@ public class Location implements ILocation {
     public Location() {
 
     }
+
     public Location(Coordinate coordinate, String title, String description, LocationType locationType) {
         this.coordinate = coordinate;
         this.title = title;
@@ -87,12 +88,12 @@ public class Location implements ILocation {
     }
 
     // It checks each direction for an exit and adds it to the exits hashmap if it exists.
-    //它检查出口的每个方向,并将其添加到出口哈希映射（如果存在）。
+    //它检查出口的每个方向,并将其添加到出口哈希映射（如果存在）.
     public Map<Direction, ILocation> getExits() {
         Map<Direction, ILocation> exits = new HashMap<Direction, ILocation>();
         ILocation borderingLocation;
         LocationRepository locationRepo = GameBeans.getLocationRepository();
-        for(Direction direction: Direction.values()) {
+        for (Direction direction : Direction.values()) {
             try {
                 borderingLocation = locationRepo.getLocation(getCoordinate().getBorderingCoordinate(direction));
                 if (borderingLocation.getCoordinate().getZ() == getCoordinate().getZ()) {
@@ -100,8 +101,7 @@ public class Location implements ILocation {
                 } else if (getLocationType().equals(LocationType.STAIRS)) {
                     exits.put(direction, borderingLocation);
                 }
-            }
-            catch (RepositoryException ex) {
+            } catch (RepositoryException ex) {
                 //Location does not exist so do nothing
             }
         }
@@ -111,6 +111,7 @@ public class Location implements ILocation {
     public Storage getStorage() {
         return storage;
     }
+
     public List<Item> getItems() {
         return storage.getItems();
     }
@@ -126,10 +127,11 @@ public class Location implements ILocation {
     }
 
     public void remove(NPC npc) {
-        if (npc.getClass() == Monster.class) {
-            removeMonster((Monster) npc);
-        } else {
+        //Class<? extends NPC> aClass = npc.getClass();
+        if (npc.getClass().equals(NPC.class)) {
             removeNpc(npc);
+        } else {
+            removeMonster((Monster) npc);
         }
     }
 
@@ -172,8 +174,7 @@ public class Location implements ILocation {
     }
 
     public void print() {
-        QueueProvider.offer("\n" + getTitle() + ":");
-        QueueProvider.offer("    " + getDescription());
+        QueueProvider.offer(String.format(Define.strLocationsView, getTitle(), getCoordinate(), getDescription()));
         List<Item> items = getItems();
         if (!items.isEmpty()) {
             QueueProvider.offer(Define.strItemsFind);
@@ -189,9 +190,11 @@ public class Location implements ILocation {
             }
         }
         QueueProvider.offer("");
-        for (Map.Entry<Direction,ILocation> direction : getExits().entrySet()) {
-		QueueProvider.offer(direction.getKey().getDescription() + ": ");
-    		QueueProvider.offer("    " + direction.getValue().getDescription());
+        for (Map.Entry<Direction, ILocation> direction : getExits().entrySet()) {
+            QueueProvider.offer(String.format(Define.strLocationsView
+                    , direction.getKey().getDescription()
+                    , direction.getValue().getCoordinate()
+                    , direction.getValue().getDescription()));
         }
     }
 }

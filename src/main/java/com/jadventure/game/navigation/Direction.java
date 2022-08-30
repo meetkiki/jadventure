@@ -9,8 +9,8 @@ package com.jadventure.game.navigation;
 import com.jadventure.game.constant.Define;
 
 /**
- *具有四个属性的枚举：游戏内文本的描述和三个整数。
- *将整数添加到坐标以获得新方向（即获得北坐标将1添加到坐标的y属性）。
+ *具有四个属性的枚举：游戏内文本的描述和三个整数.
+ *将整数添加到坐标以获得新方向（即获得北坐标将1添加到坐标的y属性）.
  */
 public enum Direction {
     NORTH(Define.strToNorth, 0, 1, 0),
