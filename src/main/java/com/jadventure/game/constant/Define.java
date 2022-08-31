@@ -41,10 +41,21 @@ public class Define {
 
     public static String strDataSave="您的游戏数据已保存.";//\nYour game data was saved
 
+    public static String strEntityHead="头";
+    public static String strEntityChest="胸部";
+    public static String strEntityLeftArm="左臂";
+    public static String strEntityLeftHand="左手";
+    public static String strEntityRightArm="右臂";
+    public static String strEntityRightHand="右手";
+    public static String strEntityBothHands="两手";
+    public static String strEntityBothArms="双臂";
+    public static String strEntityLegs="腿";
+    public static String strEntityFeet="脚";
+
     public static String strFoeDrop="掉落了一个[%s].";//Your opponent dropped a// .
     public static String strFoeNull="未发现敌人.";//Opponent not found
 
-    public static String strItemsDrop="掉落了[%s].";//item.getName() + " dropped
+    public static String strItemsDrop="丢弃了[%s].";//item.getName() + " dropped
     public static String strItemsEmpty="--空--";//--Empty--
     public static String strItemsEquip="装备物品";
     public static String strItemsEquip001="想要穿上什么装备?";//What item do you want to unequip?
@@ -53,6 +64,8 @@ public class Define {
     public static String strItemsFind="发现物品:";//Items:
     public static String strItemsFindNull="尚未拥有该物品!";//You do not have that item
     public static String strItemsLevel="尚未到达使用物品的等级!";//You do not have the required level to use this item
+    public static String strItemsNull="Invalid item name";
+    public static String strItemsNull001="参数'id'的值为'%s',未在存储库中找到.";//Argument 'id' with value '生肉' not found in repository.
     public static String strItemsUnEquip="卸下物品";
     public static String strItemsUnEquip001="你卸下了[%s].";//unequipped
     public static String strItemsUse="想要是用什么装备?";//What item do you want to use?
@@ -64,14 +77,21 @@ public class Define {
     public static String strLocationsSave="游戏位置已保存.";//The game locations were saved.
     public static String strLocationsView="%s{%s}:\n    %s";//The game locations were saved.
 
-    public static String strNPCs="NPCs:";//NPCs:
+    public static String strNPCs="NPC:";//NPCs:
     public static String strNPCsTalkError="不能与[%s]对话.";//Unable to talk to " + arg
 
     public static String strRecord="记录:";//Profiles:
     public static String strRecordChioce="选择要加载的配置文件.输入'后退'返回.";//\nSelect a profile to load. Type 'back' to go back.
+    public static String strRecordChioce001="选择要删除的配置文件.输入'后退'返回.";
     public static String strRecordDelete="删除存档";//Deletes an existing Game
+    public static String strRecordDelete001="确定要删除[%s]?(y/n)";
+    public static String strRecordDelete002="存档[%s]已经删除.";
+    public static String strRecordDelete003="取消删除存档[%s]";
     public static String strRecordFindNull="找不到[%s]记录.";//Unable to open file '" + fileName
+    public static String strRecordFindNull001="找到不到存档,请重试.";
     public static String strRecordLoad="加载存档";//Loads an existing Game
+    public static String strRecordNull="没有存档,请开始新的游戏.";
+    public static String strRecordNull001="没有存档!";
     public static String strRecordSaveError="无法保存[%s]记录.";//Unable to save to file '" + fileName
     public static String strRecordStart="开始新的旅程";//Starts a new Game
 
@@ -90,12 +110,32 @@ public class Define {
     public static String strRolePick="你捡起了[%s].";//picked up
     public static String strRolePickNull="[%s]不存在.";//picked up
     public static String strRoleView="视察自身人物的状态";
+    public static String strRoleView001="玩家昵称: %s\n" +
+            "职业: %s\n" +
+            "当前武器: %s\n" +
+            "金币: %s\n" +
+            "当前生命值/最大值: %s/%s\n" +
+            "伤害/护甲: %s/%s\n" +
+            "力量: %s\n" +
+            "智力: %s\n" +
+            "敏捷: %s\n" +
+            "幸运: %s\n" +
+            "精神: %s\n" +
+            "经验: %s\n" +
+            "等级: %s";
     public static String strRoleWin="通过击杀[%s]\n你获得了[%s]经验以及[%s]金币";//You killed a \nYou have gained XP and gold
 
+    public static String strSys001="必须使用测试配置文件进行调试";//Must be using test profile to debug
     public static String strSysExit="退出";//EXIT!
     public static String strSysGoodbye="再见,冒险家!";//Goodbye!
+    public static String strSysHelp="\nlist:列出玩家当前拥有的物品\n" +
+            "add：添加物品\n"+
+            "remove：删除物品\n"+
+            "help：打印'帮助'\n"+
+            "exit：退出背包调试菜单\n";
     public static String strSysLine="----------------------------";
     public static String strSysNo="n";
+    public static String strSysRole="admin";//测试玩家账号;可以调用debug的指令
     public static String strSysView="你的指令是?例如：查看状态（vs）、查看背包（vb）、查看装备（ve）";//\nWhat is your command? ex. View stats(vs), View Backpack(vb), View Equipment(ve)
     public static String strSysWelcome="欢迎回来,%s!";//Welcome back,%s!
     public static String strSysWelcome001="欢迎来到西里亚,%s.";//Welcome to Silliya,%s.
@@ -116,7 +156,6 @@ public class Define {
     public static String strTradeBuy001="%s物品:\t%s金币:%s";//Guide's items:    Guide's gold:100
     public static String strTradeBuy002="售出给[%s].";//Sell to
     public static String strTradeBuy003="你拥有[%s]金币.\n你想买点啥?";//You have " + player.getGold() + " gold coins.\nWhat do you want to buy?
-    //zgnTodo 暂不清楚_test001
     public static String strTradeBuy004="购买了一份[%s]消费了[%s].";//QueueProvider.offer("You have bought a " + item.getName() + " for " + item.getProperties().get("value") + " gold coins.");
     public static String strTradeBuy005="还剩[%s]金币.";//QueueProvider.offer("You now have " + player.getGold() + " gold coins remaining.");
     public static String strTradeBuy006="[%s]金币不够!";//You do not have enough money!
@@ -129,43 +168,8 @@ public class Define {
     public static String strTradeSell="售出给[%s].";//Sell to
     public static String strTradeSelling="[%s]以%s金币售出了[%s].";
 
-    public static String strEntityHead="头";
-    public static String strEntityChest="胸部";
-    public static String strEntityLeftArm="左臂";
-    public static String strEntityLeftHand="左手";
-    public static String strEntityRightArm="右臂";
-    public static String strEntityRightHand="右手";
-    public static String strEntityBothHands="两手";
-    public static String strEntityBothArms="双臂";
-    public static String strEntityLegs="腿";
-    public static String strEntityFeet="脚";
-    public static String strRoleView001="玩家昵称: %s\n" +
-            "职业: %s\n" +
-            "当前武器: %s\n" +
-            "金币: %s\n" +
-            "当前生命值/最大值: %s/%s\n" +
-            "伤害/护甲: %s/%s\n" +
-            "力量: %s\n" +
-            "智力: %s\n" +
-            "敏捷: %s\n" +
-            "幸运: %s\n" +
-            "精神: %s\n" +
-            "经验: %s\n" +
-            "等级: %s";
 
-    public static String strRecordNull="没有存档,请开始新的游戏.";
-    public static String strRecordFindNull001="找到不到存档,请重试.";
-    public static String strRecordNull001="没有存档!";
-    public static String strRecordChioce001="选择要删除的配置文件.输入'后退'返回.";
-    public static String strRecordDelete001="确定要删除[%s]?(y/n)";
-    public static String strRecordDelete002="存档[%s]已经删除.";
-    public static String strRecordDelete003="取消删除存档[%s]";
-    public static String strSysHelp="\nlist:列出玩家当前拥有的物品\n" +
-            "add：添加新项目\n"+
-            "remove：删除项目\n"+
-            "help：打印此信息\n"+
-            "exit：退出背包调试菜单\n";
-    public static String strItemsNull="Invalid item name";
 
-    public static String strSys001="必须使用测试配置文件进行调试";//Must be using test profile to debug
+
+
 }

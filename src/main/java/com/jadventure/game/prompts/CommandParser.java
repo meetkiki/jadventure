@@ -71,7 +71,7 @@ public class CommandParser {
                     if (command.equals(key)) {
                         try {
                             if (method.getAnnotation(Command.class).debug()) {
-                                if ("test".equals(player.getName())) {
+                                if (Define.strSysRole.equals(player.getName())) {
                                     method.invoke(com);
                                 } else {
                                     QueueProvider.offer(Define.strSys001);
@@ -94,7 +94,7 @@ public class CommandParser {
                     String arg = command.substring(key.length()).trim();
                     try {
                         if (method.getAnnotation(Command.class).debug()) {
-                            if ("test".equals(player.getName())) {
+                            if (Define.strSysRole.equals(player.getName())) {
                                 method.invoke(com, arg);
                             } else {
                                 QueueProvider.offer(Define.strSys001);

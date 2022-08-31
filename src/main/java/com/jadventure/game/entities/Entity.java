@@ -231,7 +231,7 @@ public abstract class Entity {
                 result.put("damage", String.valueOf(diffDamage));
                 break;
             }
-            case 'a': {//盔甲
+            case 'a': {//防具
                 this.armour += item.getProperty("armour");
                 int diffArmour = this.armour - oldArmour;
                 result.put("armour", String.valueOf(diffArmour));

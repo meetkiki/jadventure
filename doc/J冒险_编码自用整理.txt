@@ -38,11 +38,18 @@
 	要与非玩家角色交谈：talk/t/speakto
 		t <npc>
 
-	内置功能
+	调试功能
 		调整玩家的最大生命值 maxhealth <num>
 		调整玩家的生命值 health<num>
 		调整玩家的护甲值 armour<num>
 		调整玩家的等级 level <num>
 		调整玩家拥有的金币数量 gold<num>
 		将玩家移动到指定的坐标 teleport<x,y,z>
-		打开背包调试菜单(功能尚未实现) backpack
+		打开背包调试菜单 backpack
+			list:列出玩家当前拥有的物品
+			add：添加新项目
+				add<itemId>
+			remove：删除项目
+				remove<itemName>
+			help：打印此信息
+			exit：退出背包调试菜单

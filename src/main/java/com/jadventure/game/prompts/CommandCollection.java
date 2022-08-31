@@ -100,7 +100,7 @@ public enum CommandCollection {
                     command,
                     annotation.description());
             if (annotation.debug()) {
-                if ("test".equals(player.getName())) {
+                if (Define.strSysRole.equals(player.getName())) {
                     QueueProvider.offer(message);
                 }
             } else {
@@ -143,14 +143,14 @@ public enum CommandCollection {
                 ILocation newLocation = exits.get(Direction.valueOf(arg.toUpperCase()));
                 if (!newLocation.getLocationType().equals(LocationType.WALL)) {
                     player.setLocation(newLocation);
-                    if ("test".equals(player.getName())) {
+                    /*if ("test".equals(player.getName())) {
                         QueueProvider.offer(player.getLocation().getCoordinate().toString());
-                    }
+                    }*/
                     player.getLocation().print();
                     Random random = new Random();
                     if (player.getLocation().getMonsters().size() == 0) {
                         MonsterFactory monsterFactory = new MonsterFactory();
-                        //随机生成[危险系数+1] ~ 0 之间的怪物
+                        //zgnHelp 随机生成数量为{[危险系数+1] ~ 0}之间的怪物(可能性[危险系数]/6)
                         int upperBound = random.nextInt(player.getLocation().getDangerRating() + 1);
                         for (int i = 0; i < upperBound; i++) {
                             Monster monster = monsterFactory.generateMonster(player);

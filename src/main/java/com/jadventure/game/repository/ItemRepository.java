@@ -18,6 +18,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.jadventure.game.constant.Define;
 import com.jadventure.game.entities.EquipmentLocation;
 import com.jadventure.game.items.Item;
 
@@ -43,11 +44,11 @@ public class ItemRepository {
             return null;
         }
 	    if (!itemMap.containsKey(id)) {
-	        throw new RepositoryException("Argument 'id' with value '" + id + "' not found in repository.");
+            throw new RepositoryException(String.format(Define.strItemsNull001,id));
 	    }
 	    return itemMap.get(id);
 	}
-	
+
     // Load all items, from the given file
     protected void load(File repo) {
         try {
@@ -70,7 +71,7 @@ public class ItemRepository {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        
+
         for (Map.Entry<String, JsonElement> entry : jsonItems.entrySet()) {
             String id = entry.getKey();
             JsonObject itemData = entry.getValue().getAsJsonObject();
@@ -87,7 +88,7 @@ public class ItemRepository {
             }
 
             addItem(new Item(id, type, name, description, position, level, properties));
-            
+
         }
     }
 

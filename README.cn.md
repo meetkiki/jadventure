@@ -61,46 +61,46 @@ JAdventure是基于Java（文本）的
  1. [Dev-Osmium](https://github.com/Dev-Osmium)
 
 
-开发或游戏设置游戏
+开发或安装游戏
 -----------------------------------------------
 
 ###游戏安装
 
-1.从下载游戏[此处](https://github.com/Progether/JAdventure/releases) 
-2.提取游戏文件
-3.进入游戏目录并运行`java-jar jadventure XX.jar`（其中XX是版本）
+1. 从下载游戏[此处](https://github.com/Progether/JAdventure/releases) 
+1. 提取游戏文件
+1. 进入游戏目录并运行`java-jar jadventure XX.jar`（其中XX是版本）
 
 ###与Maven-开发人员一起运行
-1.安装[Maven](http://maven.apache.com)
-1.进入游戏目录并运行
+1. 安装[Maven](http://maven.apache.com)
+1. 进入游戏目录并运行
 
     ```
     $mvn测试
     $mvn exec:java
     ```
 
-玩游戏
+游戏指令
 ----------------
-要开始新游戏：
+开始新游戏：
 
 	start
-要保存游戏：
+保存游戏：
 
 	s/save
 使用以下命令获取命令列表：
 
 	h/help
-要获取您周围的怪物列表：
+获取您周围的怪物列表：
 
 	m/enemy/monster
-要查看有关玩家的详细信息：
+查看有关玩家的详细信息：
     
     view/v
 
 	v s - 查看状态
     v e - 查看装备
     v b - 查看背包
-要退出游戏：
+退出游戏：
 
 	exit
 移动：
@@ -113,11 +113,11 @@ JAdventure是基于Java（文本）的
 	g w - 向西
 	g u - 向上
     g d - 向下
-要拾取项目：
+拾取项目：
     
     pick/p/pickup
 	p <itemName>
-要删除项目：
+删除项目：
 
     drop/d
 	d <itemName>
@@ -129,10 +129,10 @@ JAdventure是基于Java（文本）的
 攻击：
 
 	a <monster>
-环顾四周：
+环顾四周(获取场景和物品信息)：
 
 	la/lookaround
-要与非玩家角色交谈：
+与非玩家角色交谈：
 
     talk/t/speakto
 	t <npc>
@@ -149,7 +149,8 @@ test是特殊的账号
     调整玩家的等级 level <num>
     调整玩家拥有的金币数量 gold<num>
     将玩家移动到指定的坐标 teleport<x,y,z>
-    打开背包调试菜单(功能尚未实现) backpack
+    打开背包调试菜单 backpack
+        help<itemId>
 
 
 
