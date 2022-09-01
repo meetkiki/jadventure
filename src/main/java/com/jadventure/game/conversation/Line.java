@@ -14,7 +14,7 @@ public class Line {
     private String playerPrompt;//玩家说的话
     private String text;//回复
     private ConditionType condition;//交流情况角色限制
-    private String conditionParameter;
+    private String conditionParameter;//npcs->conversations的condition
     private List<Integer> responses;//回复Line序号
     private ActionType action;//动作
 

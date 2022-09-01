@@ -1,7 +1,7 @@
 {
   "npcs": {
     "guide": {
-      "name": "向导",
+      "name": "索拉尔",
       "health": 100,
       "healthMax": 100,
       "damage": 0,
@@ -14,8 +14,8 @@
       "stealth": 0,
       "gold": 100,
       "allies": [
-        "Recruit",
-        "Sewer Rat"
+        "新兵",
+        "盗贼"
       ],
       "enemies": [],
       "tradingEmphasis": [
@@ -56,7 +56,7 @@
           "action": "none"
         },
         {
-          "condition": "char type=Sewer Rat",
+          "condition": "char type=盗贼",
           "player": "我该怎么办?",
           "text": "这是个有趣的问题.作为一个下水道老鼠,你可以自由支配地下空间.边探索边学习.下面有一些令人讨厌的角色,但他们不应该对你太刻薄.不过要小心那些怪物.他们会不顾一切地攻击你.",
           "response": [
@@ -66,7 +66,7 @@
           "action": "none"
         },
         {
-          "condition": "char type=Recruit",
+          "condition": "char type=新兵",
           "player": "我应该去哪?",
           "text": "快上楼!这不是你的地方,我相信你的上司会想知道你在哪里. ",
           "response": [
@@ -87,7 +87,7 @@
         {
           "condition": "none",
           "player": "再见",
-          "text": "再见,我的朋友 !",
+          "text": "再见,我的朋友!",
           "action": "none"
         }
       ]
@@ -132,10 +132,10 @@
       ],
       "intro": "嘿,老鼠.你死了吗??\n*你呻吟了一声…*\n你在干什么?!?你不知道睡得离新兵营地这么近很疯狂吗?很快就会有警卫从楼梯上下来抓住你!你最终会被征召入伍!你最好回来.\n顺便问一下,你叫什么名字?",
       "allies": [
-        "Sewer Rat"
+        "盗贼"
       ],
       "enemies": [
-        "Recruit"
+        "新兵"
       ],
       "items": [
         "pmil1"
@@ -184,7 +184,7 @@
         {
           "condition": "none",
           "player": "",
-          "text": "好我能帮你做点什么吗?也许是服务?你需要的一切我都有.当然要付出代价.",
+          "text": "好,我能帮你做点什么吗?也许是服务?你需要的一切我都有.当然要付出代价.",
           "response": [
             1,
             2
@@ -204,7 +204,7 @@
         {
           "condition": "none",
           "player": "那没关系",
-          "text": "*鞠躬*\n 直到下次",
+          "text": "*鞠躬*\n 来日再见",
           "action": "none"
         },
         {
@@ -215,11 +215,11 @@
         }
       ],
       "allies": [
-        "Sewer Rat"
+        "盗贼"
       ],
       "enemies": [
-        "Recruit",
-        "Brotherhood Member"
+        "新兵",
+        "兄弟会成员"
       ],
       "tradingEmphasis": [
         "a",
@@ -275,11 +275,11 @@
         }
       ],
       "allies": [
-        "Sewer Rat"
+        "盗贼"
       ],
       "enemies": [
-        "Recruit",
-        "Syndicate Member"
+        "新兵",
+        "辛迪加成员"
       ],
       "tradingEmphasis": [
         "w",
@@ -377,10 +377,10 @@
       ],
       "intro": "嘿…你还活着吗\n*你发出一声呻吟*\n嘿,伙计,你需要醒过来.警卫很快就会过来,他们用长矛刺穿了最后一个还在睡觉的人.\n*慢慢地,你坐起来*\n就是这样!我要回去了.尽快跟我来.\n顺便说一下,我是索拉尔.你叫什么名字? ",
       "allies": [
-        "Recruit"
+        "新兵"
       ],
       "enemies": [
-        "Sewer Rat"
+        "盗贼"
       ],
       "items": [
         "pmil1"

@@ -14,6 +14,14 @@ import com.jadventure.game.constant.Define;
 import com.jadventure.game.entities.Player;
 
 public class CharacterChange {
+    /**
+     * 玩家通过[triggerType]动作调整,角色好感度
+     * @author  zgn
+     * @date    2022/9/1 0001
+     * @param	player
+     * @param	triggerType
+     * @param	keyword
+     */
     public void trigger(Player player, String triggerType, String keyword) {
         JsonParser parser = new JsonParser();
         String fileName = Define.configPath+"character_transitions.json";
@@ -48,7 +56,7 @@ public class CharacterChange {
                 for (Map.Entry<String, JsonElement> entry : characterEffects.entrySet()) {
                     String characterName = entry.getKey();
                     int characterLevelEffect = entry.getValue().getAsInt();
-                    int characterLevel = player.getCharacterLevel(characterName); 
+                    int characterLevel = player.getCharacterLevel(characterName);
                     int newCharacterLevel = characterLevel + characterLevelEffect;
                     player.setCharacterLevel(characterName, newCharacterLevel);
                     checkForCharacterChange(player);
@@ -59,7 +67,11 @@ public class CharacterChange {
             ex.printStackTrace();
         }
     }
-
+    /**
+     * 当玩家最高职业等级大于当前职业等级,会进行转职
+     * @author  zgn
+     * @date    2022/9/1 0001
+     */
     public void checkForCharacterChange(Player player) {
         HashMap<String, Integer> characterLevels = player.getCharacterLevels();
         String currentCharacter = player.getCurrentCharacterType();
@@ -76,7 +88,7 @@ public class CharacterChange {
         }
         if (!highestCharacter.equals(currentCharacter)) {
             player.setCurrentCharacterType(highestCharacter);
-            QueueProvider.offer("You're character type is now changed! You are now a " + highestCharacter + "!");
+            QueueProvider.offer(String.format(Define.strRoleEdit,highestCharacter));
         }
         it = characterLevels.entrySet().iterator();
         while (it.hasNext()) {

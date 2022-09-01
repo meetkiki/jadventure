@@ -189,7 +189,7 @@ public class ConversationManager {
     private void triggerAction(Line line, NPC npc, Player player) throws DeathException {
         switch (line.getAction()) {
             case ATTACK:
-                QueueProvider.offer("\n" + npc.getName() + " is now attacking you!\n");
+                QueueProvider.offer(String.format(Define.strBattleing,npc.getName()));
                 player.attack(npc.getName());
                 break;
             case TRADE:

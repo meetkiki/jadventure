@@ -27,6 +27,8 @@ public class Define {
     public static String commandView="视察";
     public static String commandRecruit="新兵";
     public static String commandSewerRat="盗贼";
+    public static String commandSyndicate="辛迪加成员";
+    public static String commandBrotherhood="兄弟会成员";
 
     public static String strBackpack="背包";//Backpack:
     public static String strBackpackEdit="编辑"+strBackpack;//Edit backpack:
@@ -37,7 +39,7 @@ public class Define {
     public static String strBattle003="致命一击!伤害加倍!";//The Goblin's health is 39
     public static String strBattle004="你附近的怪物:";//Monsters around you:
     public static String strBattle005="附近没有怪物了";//There are no monsters around you'n
-    public static String strBattleing="一只[%s]正在攻击你!";//A %s is attacking you!
+    public static String strBattleing="[%s]正在攻击你!";//A %s is attacking you!
 
     public static String strDataSave="您的游戏数据已保存.";//\nYour game data was saved
 
@@ -101,6 +103,7 @@ public class Define {
     public static String strRoleDefend="抵御[%s]的进攻";
     public static String strRoleDefend001="已经准备好抵抗[%s]了.";//You get ready to defend against the Goblin.
     public static String strRoleDied="角色阵亡...重新开始?(y/n)";//You died... Start again? (y/n)
+    public static String strRoleEdit="您的主职业现在已更改!你现在是[%s]!";//You're character type is now changed! You are now a 兄弟会成员!
     public static String strRoleEscape="试图从[%s]身后逃跑";//You have managed to escape the:
     public static String strRoleEscape001="试图逃跑太多次了!";//You have tried to escape too many times!
     public static String strRoleEscape002="[%s]:软弱!(逃跑失败)";//You failed to escape the:
@@ -135,7 +138,7 @@ public class Define {
             "exit：退出背包调试菜单\n";
     public static String strSysLine="----------------------------";
     public static String strSysNo="n";
-    public static String strSysRole="admin";//测试玩家账号;可以调用debug的指令
+    public static String strSysRole="测试盗贼_xdh";//测试玩家账号;可以调用debug的指令 ;测试新兵;测试盗贼_xdj;测试盗贼_xdh;test
     public static String strSysView="你的指令是?例如：查看状态（vs）、查看背包（vb）、查看装备（ve）";//\nWhat is your command? ex. View stats(vs), View Backpack(vb), View Equipment(ve)
     public static String strSysWelcome="欢迎回来,%s!";//Welcome back,%s!
     public static String strSysWelcome001="欢迎来到西里亚,%s.";//Welcome to Silliya,%s.
@@ -167,9 +170,5 @@ public class Define {
     public static String strTradeCurrencySell="[%s]的金币:%s,\n你想卖什么?";
     public static String strTradeSell="售出给[%s].";//Sell to
     public static String strTradeSelling="[%s]以%s金币售出了[%s].";
-
-
-
-
 
 }

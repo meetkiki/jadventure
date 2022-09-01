@@ -28,6 +28,12 @@ public class simJunit {
     }
 
     @Test
+    public void 简单计算_egMin() {//e.g.
+        System.out.println((int)((0.5+0.02*(2+2))*100));
+    }
+
+
+    @Test
     public void 字串换行输出_egMin() {//e.g.
         QueueProvider.offer(String.format(Define.strLocationsView,"暗廊","1,2,3","很长很暗的走廊"));
     }

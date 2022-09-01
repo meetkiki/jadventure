@@ -1,1 +1,28 @@
-{"name":"test","healthMax":1000,"health":1000,"armour":150,"damage":50.0,"gold":999,"level":2,"xp":0,"strength":2,"intelligence":1,"dexterity":2,"luck":2,"stealth":1,"weapon":"hands","type":"新兵","items":{"pmil1":1},"equipment":{},"types":{"Brotherhood Member":4,"Syndicate Member":4,"Sewer Rat":5,"Recruit":3},"location":"-2,8,-1"}
+{
+  "name": "test",
+  "healthMax": 100,
+  "health": 100,
+  "armour": 0,
+  "damage": 40.0,
+  "gold": 0,
+  "level": 1,
+  "xp": 0,
+  "strength": 1,
+  "intelligence": 2,
+  "dexterity": 1,
+  "luck": 1,
+  "stealth": 2,
+  "weapon": "hands",
+  "type": "盗贼",
+  "items": {
+    "pmil1": 1
+  },
+  "equipment": {},
+  "types": {
+    "兄弟会成员": 4,
+    "新兵": 3,
+    "盗贼": 5,
+    "辛迪加成员": 4
+  },
+  "location": "0,0,-1"
+}

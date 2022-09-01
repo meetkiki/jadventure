@@ -18,8 +18,8 @@ import com.google.gson.JsonObject;
 public class NPC extends Entity {
     private int xpGain;
     private String id;
-    private List<String> allies;
-    private List<String> enemies;
+    private List<String> allies;//盟友
+    private List<String> enemies;//敌人
 
     public NPC() {
         allies = new ArrayList<>();

@@ -1,22 +1,22 @@
 {
-  "Sewer Rat": {
+  "盗贼": {
     "kill": {
-      "Brotherhood Member": {
-        "Sewer Rat": -1,
-        "Brotherhood Member": -1,
-        "Syndicate Member": 1
+      "兄弟会成员": {
+        "盗贼": -1,
+        "兄弟会成员": -1,
+        "辛迪加成员": 1
       },
-      "Syndicate Member": {
-        "Sewer Rat": -1,
-        "Brotherhood Member": 1,
-        "Syndicate Member": -1
+      "辛迪加成员": {
+        "盗贼": -1,
+        "兄弟会成员": 1,
+        "辛迪加成员": -1
       },
-      "Recruit": {
-        "Recruit": -1
+      "新兵": {
+        "新兵": -1
       }
     }
   },
-  "Recruit": {
+  "新兵": {
     "kill": {
     }
   }

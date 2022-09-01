@@ -69,10 +69,10 @@ public class Player extends Entity {
     }
 
     protected static void setUpCharacterLevels() {
-        characterLevels.put("Sewer Rat", 5);
-        characterLevels.put("Recruit", 3);
-        characterLevels.put("Syndicate Member", 4);
-        characterLevels.put("Brotherhood Member", 4);
+        characterLevels.put(Define.commandSewerRat, 5);
+        characterLevels.put(Define.commandRecruit, 3);
+        characterLevels.put(Define.commandSyndicate, 4);
+        characterLevels.put(Define.commandBrotherhood, 4);
     }
 
     public HashMap<String, Integer> getCharacterLevels() {
