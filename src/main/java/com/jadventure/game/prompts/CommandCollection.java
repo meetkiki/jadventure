@@ -244,8 +244,8 @@ public enum CommandCollection {
 
     // Debug methods here
 
-    @Command(command="attack", aliases={""}, description="调整玩家的伤害等级", debug=true)
-    public void command_attack(String arg) {
+    @Command(command="damage", aliases={""}, description="调整玩家的伤害等级", debug=true)
+    public void command_damage(String arg) {
         double damage = Double.parseDouble(arg);
         player.setDamage(damage);
     }

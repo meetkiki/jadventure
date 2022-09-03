@@ -32,7 +32,7 @@
 	装备/取消装备项目：equip/e unequip/ue
 		e <itemName>
 	    ue <itemName>
-	攻击：attack[也涉及伤害调整,伤害双倍]/a
+	攻击：
 		a <monster>
 	环顾四周：la/lookaround
 	要与非玩家角色交谈：talk/t/speakto
@@ -42,6 +42,7 @@
 		调整玩家的最大生命值 maxhealth <num>
 		调整玩家的生命值 health<num>
 		调整玩家的护甲值 armour<num>
+		调整玩家的伤害 damage<num>
 		调整玩家的等级 level <num>
 		调整玩家拥有的金币数量 gold<num>
 		将玩家移动到指定的坐标 teleport<x,y,z>
